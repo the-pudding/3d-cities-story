@@ -13,16 +13,16 @@ header.is-sticky
     left 1rem
     padding 0rem
     margin 0rem
-    color #667177
+    color #706677
     font-size 13px
     line-height .9
     a
-      color #667177
-      border-bottom 1px solid #667177
+      color #706677
+      border-bottom 1px solid #706677
       font-size 13px
   .logo
     svg
-      fill #A1AFB7
+      fill rgba(112, 102, 119, 0.4196078431372549)
 
 body
   background #f7f7f7
@@ -30,7 +30,7 @@ body
     background #f7f7f7
 
 .intro
-  background linear-gradient(#f7f7f7 77%, #ffffff00 100%)
+  background linear-gradient(#f7f7f7 87%, #ffffff00 100%)
   margin-bottom -100px
   z-index 100
   position relative
@@ -39,13 +39,39 @@ body
     width 530px
     margin 0 auto
     p
-      color #667177
+      color #706677
       font-family 'Atlas Grotesk Web'
       font-weight 400
   .intro__hed
-    color #174B48
+    color #772521
     font-size 80px
     margin-bottom 30px
+.scroll
+  position relative
+  .scroll__text
+    .step
+      height 600px
+      background red
+      width 50%
+      border-bottom 10px solid black
+      p
+        background white
+        //position absolute
+        z-index 1000
+        width 250px
+        font-size 12px
+        text-align center
+        padding 10px 10px
+        margin 0px
+        //top 50%
+        //left 50%
+        //transform translate(-100%,0%)
+        border-radius 5px
+        box-shadow 0px 3px 3px 1px rgba(0, 0, 0, 0.38)
+        font-family 'Atlas Grotesk Web'
+  #map
+    height 100vh
+    width 100vw
 
 .image-wrapper
   //width 100%
@@ -56,9 +82,36 @@ body
     display flex
     flex-wrap wrap
     justify-content space-between
-    img
-      display block
-      width auto
+    max-width 900px
+    margin 0 auto
+    .img-wrapper
+      margin-bottom 20px
+      position relative
+      .city-name
+        padding 10px 10px
+        font-family 'Atlas Grotesk Web'
+        text-align left
+        font-size 12px
+        margin 0px
+        background #f1efef
+        position absolute
+        color #333
+        bottom 0px
+        width 100%
+        left 0px
+        font-weight 300
+        line-height 1.4
+        span
+          font-weight 500
+          font-size 13px
+          margin-right 5px
+
+
+
+      img
+        display block
+        width auto
+
   .years-wrapper
     display flex
     width 100%

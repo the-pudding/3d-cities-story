@@ -5,7 +5,7 @@
 
 	{{> base/meta}}
 
-	<!-- smoosh -->
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
 	<link rel='stylesheet' href='bundle.css' />
 	<!-- endsmoosh -->
 
@@ -34,9 +34,10 @@
 
 	{{!--
 	<script src='{{basepath}}assets/scripts/d3.v5.0.0.min.js'></script> --}}
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
 	<script src='{{basepath}}assets/scripts/d3.v4.12.0+jetpack.min.js'></script>
 	<script src='bundle.js?version={{timestamp}}' async></script>
-	<script src='https://pudding.cool/assets/scripts/pudding-footer.js' async></script>
+	<!-- <script src='https://pudding.cool/assets/scripts/pudding-footer.js' async></script> -->
 </body>
 
 </html>

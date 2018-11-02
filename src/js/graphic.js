@@ -1,8 +1,41 @@
-/* global d3 */
+
+import ScrollMagic from 'scrollmagic/scrollmagic/minified/ScrollMagic.min';
+import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
+import 'scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min';
+import TweenMax from 'gsap/src/minified/TweenMax.min';
+import TimelineMax from 'gsap/src/minified/TimelineMax.min';
 
 function resize() {}
 
 function init() {
+
+
+	var startCoords = [-74.331,41.261];
+
+	mapboxgl.accessToken =
+		'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
+
+	var map = new mapboxgl.Map({
+		container: 'map',
+		// style: 'mapbox://styles/mapbox/light-v9',
+		style: 'mapbox://styles/dock4242/cjnugndzr4rkn2spbxk0cnps5?optimize=true',
+		center: [startCoords[0], startCoords[1]],
+		zoom: 6.25,
+		pitch: 0, // pitch in degrees
+		bearing: 0, // bearing in degrees
+		interactive: false
+	});
+	map.scrollZoom.disable();
+
+	map.on("load",function(d){
+
+	})
+
+	map.on("click",function(d){
+		map.flyTo({
+			pitch:60
+		})
+	})
 
 	var style_1975 = "cjnn7622h02ph2smpyw7dhq4y";
 	var style_1990 = "cjnl0k08b88ai2slsjxzk0jii";
@@ -10,7 +43,7 @@ function init() {
 
 	var token = "pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 	var globalZoom = true;
-	var globalZoomAmount = 7.5;
+	var globalZoomAmount = 6.9;
 
 	var cityArray = [
 		{
@@ -107,17 +140,21 @@ function init() {
 			city_name:"Singapore",
 			city_id:"singapore",
 			location:{
-				center:[103.950,1.260],
-				zoom:7.13,
-				bearing:-103.18,
+				center:[103.838,1.411],
+				zoom:8.63,
+				bearing:-38.48,
 				pitch:60
 			}
 		}
 	];
 
+	// d3.select(".intro-image").append("img").attr("src",function(){
+	// 	return "https://api.mapbox.com/styles/v1/dock4242/cjnugndzr4rkn2spbxk0cnps5/static/-75.14907,41.53713,7,-51,60/1280x1280@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+	// })
+
 	// for (var city in cityArray){
-	// 	var width = Math.floor((1200-40)/4);
-	// 	var height = width;
+	// 	var width = Math.floor((900-20)/2);
+	// 	var height = width+50;
 	// 	var locationData = cityArray[city].location;
 	// 	var bearing = locationData.bearing;
 	// 	var pitch = locationData.pitch;
@@ -129,10 +166,22 @@ function init() {
 	// 		zoom = globalZoomAmount
 	// 	}
 	// 	var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
+	// 	//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
 	//
 	// 	var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"?access_token="+token;
 	//
-	// 	d3.select(".single-year-wrapper").append("img").attr("src",imageLink);
+	// 	var imgWrapper = d3.select(".single-year-wrapper").append("div").attr("class","img-wrapper")
+	//
+	// 	imgWrapper
+	// 		.append("img")
+	// 		.attr("src",imageLink);
+	//
+	// 	imgWrapper
+	// 		.append("p")
+	// 		.attr("class","city-name")
+	// 		.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
+	// 		;
+	//
 	// }
 
 	// for (var city in cityArray){
@@ -166,9 +215,28 @@ function init() {
 	//
 	// }
 
-
-
-
+	// const scroller = scrollama();
+	//
+	// function handleStepEnter(callback){
+	// 	console.log(callback);
+	// }
+	//
+	// function handleStepExit(callback){
+	// 	console.log(callback);
+	// }
+	//
+	// function handleStepProgress(callback){
+	// 	console.log(callback);
+	// }
+	//
+	// scroller.setup({
+	//   	step: '.step', // required - class name of trigger steps
+	// 		container: '.scroll', // required (for sticky)
+	// 		graphic: '.scroll__graphic' // required (for sticky)
+	// 	})
+	// 	.onStepEnter(handleStepEnter)
+	// 	.onStepProgress(handleStepProgress)
+	// 	.onStepExit(handleStepExit);
 }
 
 export default { init, resize };
