@@ -151,37 +151,37 @@ function init() {
 	// 	return "https://api.mapbox.com/styles/v1/dock4242/cjnugndzr4rkn2spbxk0cnps5/static/-75.14907,41.53713,7,-51,60/1280x1280@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 	// })
 
-	// for (var city in cityArray){
-	// 	var width = Math.floor((900-20)/2);
-	// 	var height = width+50;
-	// 	var locationData = cityArray[city].location;
-	// 	var bearing = locationData.bearing;
-	// 	var pitch = locationData.pitch;
-	// 	console.log(locationData.center);
-	// 	var lat = locationData.center[1];
-	// 	var lng = locationData.center[0];
-	// 	var zoom = locationData.zoom;
-	// 	if(globalZoom){
-	// 		zoom = globalZoomAmount
-	// 	}
-	// 	var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
-	// 	//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
-	//
-	// 	var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"?access_token="+token;
-	//
-	// 	var imgWrapper = d3.select(".single-year-wrapper").append("div").attr("class","img-wrapper")
-	//
-	// 	imgWrapper
-	// 		.append("img")
-	// 		.attr("src",imageLink);
-	//
-	// 	imgWrapper
-	// 		.append("p")
-	// 		.attr("class","city-name")
-	// 		.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
-	// 		;
-	//
-	// }
+	for (var city in cityArray){
+		var width = Math.floor((900-20)/2);
+		var height = width+50;
+		var locationData = cityArray[city].location;
+		var bearing = locationData.bearing;
+		var pitch = locationData.pitch;
+		console.log(locationData.center);
+		var lat = locationData.center[1];
+		var lng = locationData.center[0];
+		var zoom = locationData.zoom;
+		if(globalZoom){
+			zoom = globalZoomAmount
+		}
+		var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
+		//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
+
+		var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"?access_token="+token;
+
+		var imgWrapper = d3.select(".single-year-wrapper").append("div").attr("class","img-wrapper")
+
+		imgWrapper
+			.append("img")
+			.attr("src",imageLink);
+
+		imgWrapper
+			.append("p")
+			.attr("class","city-name")
+			.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
+			;
+
+	}
 
 	// for (var city in cityArray){
 	// 	var height = 400;
@@ -243,7 +243,7 @@ function init() {
 
 	var pinScene = new ScrollMagic.Scene({
 			triggerElement:"#fixed-map",
-			duration: d3.select(".scroll__text").node().getBoundingClientRect().height,// - Math.max(document.documentElement.clientHeight, window.innerHeight || 0),	// the scene should last for a scroll distance of 100px
+			duration: d3.select(".scroll__text").node().getBoundingClientRect().height - Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2,	// the scene should last for a scroll distance of 100px
 			offset: 0,	// start this scene after scrolling for 50px
 			triggerHook:0
 		})
@@ -260,7 +260,7 @@ function init() {
 		})
 		.on("progress", function (event) {
 			var progress = event.progress;
-			progress = Math.round(progress*30)/30;
+			progress = Math.round(progress*50)/50;
 			if(progress != tweenProgress){
 				tweenProgress = progress;
 				map.jumpTo({
@@ -278,7 +278,7 @@ function init() {
 		})
 		.on("progress", function (event) {
 			var progress = event.progress;
-			progress = Math.round(progress*30)/30;
+			progress = Math.round(progress*50)/50;
 			if(progress != tweenProgressRotate){
 				tweenProgressRotate = progress;
 				map.jumpTo({
@@ -286,6 +286,8 @@ function init() {
 				});
 			}
 		})
+		.addIndicators({name:"spin"})
+
 		.addTo(controller); // assign the scene to the controller
 
 }
