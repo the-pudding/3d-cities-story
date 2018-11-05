@@ -1,9 +1,8 @@
-
-import ScrollMagic from 'scrollmagic/scrollmagic/minified/ScrollMagic.min';
-import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
-import 'scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min';
-import TweenMax from 'gsap/src/minified/TweenMax.min';
-import TimelineMax from 'gsap/src/minified/TimelineMax.min';
+// import TweenMax from 'gsap/src/minified/TweenMax.min';
+// import ScrollMagic from 'scrollmagic/scrollmagic/minified/ScrollMagic.min';
+// import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
+// import 'scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min';
+// import TimelineMax from 'gsap/src/minified/TimelineMax.min';
 
 function resize() {}
 
@@ -20,7 +19,7 @@ function init() {
 		// style: 'mapbox://styles/mapbox/light-v9',
 		style: 'mapbox://styles/dock4242/cjnugndzr4rkn2spbxk0cnps5?optimize=true',
 		center: [startCoords[0], startCoords[1]],
-		zoom: 6.25,
+		zoom: 6,
 		pitch: 0, // pitch in degrees
 		bearing: 0, // bearing in degrees
 		interactive: false
@@ -237,6 +236,58 @@ function init() {
 	// 	.onStepEnter(handleStepEnter)
 	// 	.onStepProgress(handleStepProgress)
 	// 	.onStepExit(handleStepExit);
+	var controller = new ScrollMagic.Controller();
+	var tweenProgress = 0;
+	var tweenProgressRotate = 0;
+
+
+	var pinScene = new ScrollMagic.Scene({
+			triggerElement:"#fixed-map",
+			duration: d3.select(".scroll__text").node().getBoundingClientRect().height,// - Math.max(document.documentElement.clientHeight, window.innerHeight || 0),	// the scene should last for a scroll distance of 100px
+			offset: 0,	// start this scene after scrolling for 50px
+			triggerHook:0
+		})
+		.addIndicators({name:"hi there"})
+		.setPin("#fixed-map",{pushfollowers: false}) // pins the element for the the scene's duration
+		.addTo(controller); // assign the scene to the controller
+
+
+	var tiltShiftStep = new ScrollMagic.Scene({
+			triggerElement:"#tilt-shift-step",
+			duration: d3.select("#tilt-shift-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
+			offset: 0,	// start this scene after scrolling for 50px
+			triggerHook:.5
+		})
+		.on("progress", function (event) {
+			var progress = event.progress;
+			progress = Math.round(progress*30)/30;
+			if(progress != tweenProgress){
+				tweenProgress = progress;
+				map.jumpTo({
+					pitch: tweenProgress*60 // pitch in degrees
+				});
+			}
+		})
+		.addTo(controller); // assign the scene to the controller
+
+	var rotateStep = new ScrollMagic.Scene({
+			triggerElement:"#rotate-step",
+			duration: d3.select("#rotate-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
+			offset: 0,	// start this scene after scrolling for 50px
+			triggerHook:.5
+		})
+		.on("progress", function (event) {
+			var progress = event.progress;
+			progress = Math.round(progress*30)/30;
+			if(progress != tweenProgressRotate){
+				tweenProgressRotate = progress;
+				map.jumpTo({
+					bearing: tweenProgressRotate*-65.6 // pitch in degrees
+				});
+			}
+		})
+		.addTo(controller); // assign the scene to the controller
+
 }
 
 export default { init, resize };
