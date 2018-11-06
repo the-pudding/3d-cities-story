@@ -9,33 +9,88 @@ function resize() {}
 function init() {
 
 
-	var startCoords = [-74.331,41.261];
+	function setupInteractiveMap(){
+		var startCoords = [-74.331,41.261];
 
-	mapboxgl.accessToken =
-		'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
+		mapboxgl.accessToken =
+			'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
 
-	var map = new mapboxgl.Map({
-		container: 'map',
-		// style: 'mapbox://styles/mapbox/light-v9',
-		style: 'mapbox://styles/dock4242/cjnugndzr4rkn2spbxk0cnps5?optimize=true',
-		center: [startCoords[0], startCoords[1]],
-		zoom: 6,
-		pitch: 0, // pitch in degrees
-		bearing: 0, // bearing in degrees
-		interactive: false
-	});
-	map.scrollZoom.disable();
+		var map = new mapboxgl.Map({
+			container: 'map',
+			// style: 'mapbox://styles/mapbox/light-v9',
+			style: 'mapbox://styles/dock4242/cjnugndzr4rkn2spbxk0cnps5?optimize=true',
+			center: [startCoords[0], startCoords[1]],
+			zoom: 6,
+			pitch: 0, // pitch in degrees
+			bearing: 0, // bearing in degrees
+			interactive: false
+		});
+		map.scrollZoom.disable();
 
-	map.on("load",function(d){
 
-	})
-
-	map.on("click",function(d){
-		map.flyTo({
-			pitch:60
+		map.on("load",function(d){
+			map.setLayoutProperty("place-city-large", 'visibility', 'visible');
 		})
-	})
 
+		var controller = new ScrollMagic.Controller();
+		var tweenProgress = 0;
+		var tweenProgressRotate = 0;
+
+
+		var pinScene = new ScrollMagic.Scene({
+				triggerElement:"#fixed-map",
+				duration: d3.select(".scroll__text").node().getBoundingClientRect().height - Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2,	// the scene should last for a scroll distance of 100px
+				offset: 0,	// start this scene after scrolling for 50px
+				triggerHook:0
+			})
+			// .addIndicators({name:"hi there"})
+			.setPin("#fixed-map",{pushfollowers: false}) // pins the element for the the scene's duration
+			.addTo(controller); // assign the scene to the controller
+
+
+		var tiltShiftStep = new ScrollMagic.Scene({
+				triggerElement:"#tilt-shift-step",
+				duration: d3.select("#tilt-shift-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
+				offset: 0,	// start this scene after scrolling for 50px
+				triggerHook:.5
+			})
+			.on("progress", function (event) {
+				var progress = event.progress;
+				progress = Math.round(progress*50)/50;
+				if(progress != tweenProgress){
+					tweenProgress = progress;
+					map.jumpTo({
+						pitch: tweenProgress*60, // pitch in degrees
+						bearing: 0
+					});
+				}
+			})
+			.addTo(controller); // assign the scene to the controller
+
+		var rotateStep = new ScrollMagic.Scene({
+				triggerElement:"#rotate-step",
+				duration: d3.select("#rotate-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
+				offset: 0,	// start this scene after scrolling for 50px
+				triggerHook:.5
+			})
+			.on("progress", function (event) {
+				var progress = event.progress;
+				progress = Math.round(progress*50)/50;
+				if(progress != tweenProgressRotate){
+					tweenProgressRotate = progress;
+					map.jumpTo({
+						bearing: tweenProgressRotate*-65.6, // pitch in degrees
+						pitch: 60 // pitch in degrees
+
+					});
+				}
+			})
+			// .addIndicators({name:"spin"})
+
+			.addTo(controller); // assign the scene to the controller
+	}
+
+	setupInteractiveMap();
 	var style_1975 = "cjnn7622h02ph2smpyw7dhq4y";
 	var style_1990 = "cjnl0k08b88ai2slsjxzk0jii";
 	var style_2015 = "cjnel8krq2ltq2spteciqe2x3";
@@ -166,6 +221,7 @@ function init() {
 		}
 		var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
 		//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
+		zoom = zoom - .1;
 
 		var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"?access_token="+token;
 
@@ -174,12 +230,29 @@ function init() {
 		imgWrapper
 			.append("img")
 			.attr("src",imageLink);
+		//
+		// imgWrapper
+		// 	.append("p")
+		// 	.attr("class","city-name")
+		// 	.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
+		// 	;
+
+		width = 200;
+		height = height;
+
+		var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+lng+","+lat+","+zoom+","+0+","+0+"/"+width+"x"+height+"?access_token="+token;
+
+		var imgWrapper = d3.select(".single-year-wrapper").append("div").attr("class","img-wrapper")
 
 		imgWrapper
-			.append("p")
-			.attr("class","city-name")
-			.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
-			;
+			.append("img")
+			.attr("src",imageLink);
+
+		// imgWrapper
+		// 	.append("p")
+		// 	.attr("class","city-name")
+		// 	.html("<span>"+cityArray[city].city_name+"</span>We found fascinating patterns in the arrangements of buildings. Traditional road maps highlight streets and highways; here they show up as a linear absence.")
+		// 	;
 
 	}
 
@@ -236,59 +309,7 @@ function init() {
 	// 	.onStepEnter(handleStepEnter)
 	// 	.onStepProgress(handleStepProgress)
 	// 	.onStepExit(handleStepExit);
-	var controller = new ScrollMagic.Controller();
-	var tweenProgress = 0;
-	var tweenProgressRotate = 0;
 
-
-	var pinScene = new ScrollMagic.Scene({
-			triggerElement:"#fixed-map",
-			duration: d3.select(".scroll__text").node().getBoundingClientRect().height - Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2,	// the scene should last for a scroll distance of 100px
-			offset: 0,	// start this scene after scrolling for 50px
-			triggerHook:0
-		})
-		.addIndicators({name:"hi there"})
-		.setPin("#fixed-map",{pushfollowers: false}) // pins the element for the the scene's duration
-		.addTo(controller); // assign the scene to the controller
-
-
-	var tiltShiftStep = new ScrollMagic.Scene({
-			triggerElement:"#tilt-shift-step",
-			duration: d3.select("#tilt-shift-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
-			offset: 0,	// start this scene after scrolling for 50px
-			triggerHook:.5
-		})
-		.on("progress", function (event) {
-			var progress = event.progress;
-			progress = Math.round(progress*50)/50;
-			if(progress != tweenProgress){
-				tweenProgress = progress;
-				map.jumpTo({
-					pitch: tweenProgress*60 // pitch in degrees
-				});
-			}
-		})
-		.addTo(controller); // assign the scene to the controller
-
-	var rotateStep = new ScrollMagic.Scene({
-			triggerElement:"#rotate-step",
-			duration: d3.select("#rotate-step").node().getBoundingClientRect().height,	// the scene should last for a scroll distance of 100px
-			offset: 0,	// start this scene after scrolling for 50px
-			triggerHook:.5
-		})
-		.on("progress", function (event) {
-			var progress = event.progress;
-			progress = Math.round(progress*50)/50;
-			if(progress != tweenProgressRotate){
-				tweenProgressRotate = progress;
-				map.jumpTo({
-					bearing: tweenProgressRotate*-65.6 // pitch in degrees
-				});
-			}
-		})
-		.addIndicators({name:"spin"})
-
-		.addTo(controller); // assign the scene to the controller
 
 }
 
