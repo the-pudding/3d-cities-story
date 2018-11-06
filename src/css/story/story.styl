@@ -21,7 +21,7 @@ header.is-sticky
       font-size 13px
   .logo
     svg
-      fill rgba(95, 95, 95, 0.42)
+      fill rgba(90, 78, 82, 0.58)
 
 body
   background #f7f7f7
@@ -110,35 +110,73 @@ body
     display flex
     flex-wrap wrap
     justify-content space-between
-    max-width 900px
+    width 100%
     margin 0 auto
     .img-wrapper
-      margin-bottom 20px
+      padding-bottom 50px
       position relative
-      .city-name
-        padding 10px 10px
-        font-family 'Atlas Grotesk Web'
-        text-align left
-        font-size 12px
-        margin 0px
-        background #f1efef
+      width 100%
+      .text-column
+        width calc(2.5% + 160px)
         position absolute
-        color #333
-        bottom 0px
-        width 100%
-        left 0px
-        font-weight 300
-        line-height 1.4
-        span
-          font-weight 500
-          font-size 13px
-          margin-right 5px
+        z-index 1000
+        height 100%
+        background #f7f7f7
+        margin-left 2.5%
+        padding-right 20px
+        .city-toggles
+          display flex
+          .city-toggle
+            background white
+            border 1px solid #aaa
+            margin-left -1px
+            cursor hand
+            cursor pointer
+            &:first-of-type
+              border-top-left-radius 5px
+              border-bottom-left-radius 5px
+            &:last-of-type
+              border-top-right-radius 5px
+              border-bottom-right-radius 5px
+            .city-toggle-text
+              font-family 'Atlas Grotesk Web'
+              font-size 13px
+              line-height 1.5
+              padding 3px 7px
+              margin 0px
+              text-transform capitalize
 
+          .city-toggle-active
+            box-shadow inset 0 3px 5px rgba(0,0,0,.125)
+            background #F5F5F5
+            font-weight 500
 
-
-      img
-        display block
-        width auto
+        .city-name
+          font-family 'Atlas Grotesk Web'
+          text-align left
+          font-size 24px
+          font-weight 300
+          margin 0px
+          color #333
+          width 100%
+          font-weight 300
+          line-height 1.4
+        .city-desc
+          font-size 12px
+          color #667177
+          font-family 'Atlas Grotesk Web'
+      .swiper-container
+        width calc(97.5% - 180px)
+        margin-left 200px
+        height 100%
+        .swiper-pagination
+          bottom 0px
+          background #f7f7f7
+          span
+            width 12px
+            height 12px
+        img
+          display block
 
   .years-wrapper
     display flex
