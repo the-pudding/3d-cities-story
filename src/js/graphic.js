@@ -134,7 +134,7 @@ function init() {
 				center:[15.31,-4.36],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
 				zoom:7.13,
-				bearing:-82.38,
+				bearing:0,
 				pitch:60
 			}
 		},
@@ -227,9 +227,13 @@ function init() {
 	// d3.select(".intro-image").append("img").attr("src",function(){
 	// 	return "https://api.mapbox.com/styles/v1/dock4242/cjnugndzr4rkn2spbxk0cnps5/static/-75.14907,41.53713,7,-51,60/1280x1280@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 	// })
-
 		var viewportWidth = d3.select("#content").node().getBoundingClientRect().width;
-		var width = Math.floor((viewportWidth-200)/3);
+
+		var imageCount = 2
+		if((viewportWidth-200) < 1500){
+			imageCount = 3;
+		}
+		var width = Math.floor((viewportWidth-200)/imageCount);
 		var height = width+20;
 
 		var imgWrapper = d3.select(".single-year-wrapper")
@@ -271,6 +275,7 @@ function init() {
 			.append("div")
 			.attr("class","city-toggle")
 			.classed("city-toggle-active",function(d,i){
+				console.log(i);
 				if(i==0){
 					return true;
 				}
@@ -280,7 +285,7 @@ function init() {
 				var optionClicked = d;
 				var data = d3.select(this.parentNode).datum();
 				updateImages(optionClicked,data)
-				toggle.classed("city-toggle-active",false)
+				d3.select(this.parentNode).selectAll(".city-toggle").classed("city-toggle-active",false)
 				d3.select(this).classed("city-toggle-active",true);
 			})
 
@@ -293,6 +298,7 @@ function init() {
 			;
 
 		function getLink(data,zoomLevel,angle){
+			console.log(angle);
 
 			var locationData = data.location;
 			var bearing = locationData.bearing;
@@ -305,10 +311,11 @@ function init() {
 			if(globalZoom){
 				zoom = globalZoomAmount
 			}
+			var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
+
 			if(angle != "3D"){
 				pitch = 0;
 			}
-			var mapStyle = "cjnugndzr4rkn2spbxk0cnps5"
 
 			if(zoomLevel == "medium"){
 				zoom = 4.6;
@@ -316,7 +323,7 @@ function init() {
 			}
 
 			if(angle != "3D" && zoomLevel != "medium" && zoomLevel != "close"){
-				pathLink = "path-2+007aff-0.8+f44-0("+pathString+")/"
+				pathLink = "path-2+444-0.8+f44-0("+pathString+")/"
 			}
 
 			if(zoomLevel == "far"){
@@ -328,7 +335,17 @@ function init() {
 			if(zoomLevel == "super-far"){
 				zoom = 2.6;
 				mapStyle = "cjo5tayip0w952rpski8ml7w0"
-				pathLink = "path-2+007aff-0.8+f44-0("+pathString+")/"
+				pathLink = "path-2+444-0.8+f44-0("+pathString+")/"
+			}
+
+			if(angle != "3D" && zoomLevel != "close"){
+				pitch = 0;
+				mapStyle = "cjo7b0rly2am02sqoz0b4zs0y"
+				pathLink = "path-2+444-0.8+f44-0("+pathString+")/"
+			}
+
+			if(angle != "3D" && zoomLevel == "close"){
+				mapStyle = "cjo7bhuwn056i2srxhhqjer8v"
 			}
 
 
@@ -375,12 +392,17 @@ function init() {
 
 		imgBoxWrapper.each(function(d,i,j){
 			var swiper = new Swiper(j, {
-				spaceBetween: 5,
-				slidesPerGroup: 1,
+				spaceBetween: 30,
+				// slidesPerGroup: 1,
+				slidesPerView: imageCount,
 				grabCursor: true,
-				trackValues: true,
-				slidesPerView: 'auto',
-				slideToClickedSlide: true,
+				// centeredSlides: true,
+
+				// trackValues: true,
+				// freeMode: true,
+
+				// slidesPerView: 'auto',
+				// slideToClickedSlide: true,
 				pagination: {
 					el: '.swiper-pagination',
 					clickable: true,
@@ -442,6 +464,81 @@ function init() {
 	// 	.onStepEnter(handleStepEnter)
 	// 	.onStepProgress(handleStepProgress)
 	// 	.onStepExit(handleStepExit);
+
+	d3.json("assets/data/world.json",function(world){
+		var width = 64,
+    height = 64;
+
+		var radius = height / 2 - 5,
+		  scale = radius,
+		  velocity = .02;
+
+		var globeWrapper = textColumn
+			.append("div")
+			.attr("width",width+"px")
+			.attr("height",height+"px")
+			.attr("class","globe-wrapper")
+
+		var svg = '<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 -256 1792 1792" id="svg3025" version="1.1" inkscape:version="0.48.3.1 r9886" width="100%" height="100%"> <g transform="matrix(1,0,0,-1,364.47458,1270.2373)"> <path d="m 768,896 q 0,106 -75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 0,-106 75,-181 75,-75 181,-75 106,0 181,75 75,75 75,181 z m 256,0 q 0,-109 -33,-179 L 627,-57 q -16,-33 -47.5,-52 -31.5,-19 -67.5,-19 -36,0 -67.5,19 Q 413,-90 398,-57 L 33,717 Q 0,787 0,896 q 0,212 150,362 150,150 362,150 212,0 362,-150 150,-150 150,-362 z" id="path3029" inkscape:connector-curvature="0" /> </g> </svg>'
+
+
+
+		globeWrapper.append("div")
+			.attr("class","globe-wrapper-svg-container")
+			.html(svg)
+
+		var canvas = globeWrapper
+			.append("canvas")
+		  .attr("width", width)
+		  .attr("height", height)
+			.each(function(d){
+				console.log(d);
+
+
+				var projection = d3.geoOrthographic()
+					.translate([width / 2, height / 2])
+					.scale(scale)
+					.rotate([-d.location.center[0],-d.location.center[1]])
+					.clipAngle(90);
+
+				var markerProjection = projection([d.location.center[0],d.location.center[1]])
+
+				d3.select(this.parentNode).select(".globe-wrapper-svg-container")
+					.style("transform","translate("+markerProjection[0]+"px,"+markerProjection[1]+"px)");
+
+				var context = d3.select(this).node().getContext("2d");
+
+				var path = d3.geoPath()
+					.projection(projection)
+					.context(context)
+					;
+
+				var land = topojson.feature(world, world.objects.land);
+
+				context.clearRect(0, 0, width, height);
+
+				context.beginPath();
+				context.arc(width / 2, height / 2, radius, 0, 2 * Math.PI, true);
+				// context.lineWidth = 1;
+				// context.fillStyle = "#002930"
+
+				// context.stroke();
+				context.fillStyle = "#002930"
+				context.fill();
+
+				context.beginPath();
+				path(land);
+				context.fillStyle = "#fff"
+				context.fill();
+			})
+			;
+
+
+		//
+
+
+
+	})
 
 
 }
