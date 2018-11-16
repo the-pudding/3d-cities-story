@@ -89,7 +89,7 @@ body
   .intro__hed
     color #772521
     font-size 80px
-    margin-bottom 50px
+    margin-bottom 20px
 .scroll
   position relative
   display flex
@@ -158,11 +158,10 @@ body
           font-family 'Atlas Grotesk Web'
           text-align left
           font-size 36px
-          font-weight 300
+          font-weight 500
           margin 0px
           color #333
           width 100%
-          font-weight 400
           line-height 1.4
 
         .city-desc
@@ -176,9 +175,27 @@ body
         width 90%
         max-width 920px
         position relative
-        //overflow visible
+        overflow visible
+        &:after
+          position absolute
+          content ''
+          height 100%
+          right 0px
+          top 0px
+          width calc((100vw - 920px)/2)
+          transform translate(calc(100%+20px),0)
+          background linear-gradient(90deg, rgba(247, 247, 247, 0) 0%, #F7F7F7 100%)
+          z-index 1000
         .swiper-wrapper
           .swiper-slide
+            .mask-div
+              background #F7F7F7
+              position absolute
+              z-index 1000
+              bottom  0px
+              left 0px
+              height 30px
+              width 100%
             .border-div
               position absolute
               top 0px
@@ -189,7 +206,7 @@ body
               margin 0 auto
               top 50%
               transform translate(0,calc(-50% - 20px))
-              border 3px solid rgba(0, 0, 0, 0.40)
+              border 3px solid rgba(0, 0, 0, 0.55)
             &:first-of-type
               .border-div
                 border 2px solid #9A9898
@@ -240,8 +257,8 @@ body
             font-weight 500
         .swiper-pagination
           bottom 0px
-          height 30px
-          padding-top 6px
+          height 40px
+          padding-top 12px
           position absolute
           background #f7f7f7
           span

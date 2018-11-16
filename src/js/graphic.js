@@ -112,116 +112,116 @@ function init() {
 				pitch:60
 			}
 		}
-		// ,
-		// {
-		// 	city_name:"Lagos",
-		// 	city_id:"lagos",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[3.32,6.58],
-		// 		pathString:"qeii@kzpSfftB{p_BzkeAf~vAiqxBzp_B",
-		// 		zoom:7.13,
-		// 		bearing:0,
-		// 		pitch:60
-		// 	}
-		// }
-		// ,
-		// {
-		// 	city_name:"Kinshasa",
-		// 	city_id:"kinshasa",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[15.31,-4.36],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:0,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"New York City",
-		// 	city_id:"new_york_city",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[-73.98,40.76],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:-33.19,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"London",
-		// 	city_id:"london",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[-.23,51.43],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:-19.59,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"Paris",
-		// 	city_id:"paris",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[2.228,48.88],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:-19.59,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"Karachi",
-		// 	city_id:"kirachi",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[67.065,24.95],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:73.21,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"Bangalore",
-		// 	city_id:"bangalore",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[77.511,13.109],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:-23.18,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"Mexico City",
-		// 	city_id:"mexico_city",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[-99.120,19.319],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:0.74,
-		// 		pitch:60
-		// 	}
-		// },
-		// {
-		// 	city_name:"Singapore",
-		// 	city_id:"singapore",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[103.838,1.411],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:8.63,
-		// 		bearing:-38.48,
-		// 		pitch:60
-		// 	}
-		// }
+		,
+		{
+			city_name:"Lagos",
+			city_id:"lagos",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[3.32,6.58],
+				pathString:"qeii@kzpSfftB{p_BzkeAf~vAiqxBzp_B",
+				zoom:7.13,
+				bearing:0,
+				pitch:60
+			}
+		}
+		,
+		{
+			city_name:"Kinshasa",
+			city_id:"kinshasa",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[15.31,-4.36],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:0,
+				pitch:60
+			}
+		},
+		{
+			city_name:"New York City",
+			city_id:"new_york_city",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[-73.98,40.76],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-33.19,
+				pitch:60
+			}
+		},
+		{
+			city_name:"London",
+			city_id:"london",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[-.23,51.43],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-19.59,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Paris",
+			city_id:"paris",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[2.228,48.88],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-19.59,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Karachi",
+			city_id:"kirachi",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[67.065,24.95],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:73.21,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Bangalore",
+			city_id:"bangalore",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[77.511,13.109],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-23.18,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Mexico City",
+			city_id:"mexico_city",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[-99.120,19.319],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:0.74,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Singapore",
+			city_id:"singapore",
+			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			location:{
+				center:[103.838,1.411],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:8.63,
+				bearing:-38.48,
+				pitch:60
+			}
+		}
 	];
 
 	var viewportWidth = d3.select("#content").node().getBoundingClientRect().width;
@@ -251,7 +251,9 @@ function init() {
 
 
 		var imgBoxWrapper = imgWrapper.append("div")
-			.attr("class","swiper-container")
+			.attr("class",function(d){
+				return "swiper-container "+d.city_id
+			})
 			;
 
 		var textColumn = imgWrapper
@@ -368,6 +370,10 @@ function init() {
 			.append("div")
 			.attr("class","border-div");
 
+		var mask = swiperSlides
+			.append("div")
+			.attr("class","mask-div");
+
 		swiperBorderDiv
 			.style("width",function(d,i){
 				if(i==0){
@@ -434,9 +440,46 @@ function init() {
 			})
 			;
 
+			// var swiperOne = new Swiper(".hong_kong", {
+			// 	spaceBetween: 22,
+			// 	// slidesPerGroup: 1,
+			// 	slidesPerView: imageCount,
+			// 	grabCursor: true,
+			// 	// centeredSlides: true,
+			//
+			// 	// trackValues: true,
+			// 	// freeMode: true,
+			//
+			// 	slidesPerView: 'auto',
+			// 	slideToClickedSlide: true,
+			// 	pagination: {
+			// 		el: d3.select(".hong_kong").select(".swiper-pagination").node(),
+			// 		clickable: true,
+			// 	},
+			// });
+			//
+			// var swiperTwo = new Swiper(".lagos", {
+			// 	spaceBetween: 22,
+			// 	// slidesPerGroup: 1,
+			// 	slidesPerView: imageCount,
+			// 	grabCursor: true,
+			// 	// centeredSlides: true,
+			//
+			// 	// trackValues: true,
+			// 	// freeMode: true,
+			//
+			// 	slidesPerView: 'auto',
+			// 	slideToClickedSlide: true,
+			// 	pagination: {
+			// 		el: d3.select(".lagos").select(".swiper-pagination").node(),
+			// 		clickable: true,
+			// 	},
+			// });
+
+
 		imgBoxWrapper.each(function(d,i,j){
 			var elem = d3.select(this);
-			var swiper = new Swiper(j, {
+			d.swiper = new Swiper("."+d.city_id, {
 				spaceBetween: 22,
 				// slidesPerGroup: 1,
 				slidesPerView: imageCount,
@@ -446,75 +489,19 @@ function init() {
 				// trackValues: true,
 				// freeMode: true,
 
-				// slidesPerView: 'auto',
-				// slideToClickedSlide: true,
+				slidesPerView: 'auto',
+				slideToClickedSlide: true,
 				pagination: {
-					el: '.swiper-pagination',
+					el: d3.select("."+d.city_id).select(".swiper-pagination").node(),
 					clickable: true,
 				},
 			});
-			swiper.on('slideChange', function(e) {
-			 	elem.select(".fraction").text((swiper.activeIndex+1)+"/"+Math.ceil(slideData.length-1))
 
-
+			d.swiper.on('slideChange', function() {
+			 	elem.select(".fraction").text((d.swiper.activeIndex+1)+"/"+Math.ceil(slideData.length-1))
 			});
 
 		})
-
-
-	// for (var city in cityArray){
-	// 	var height = 400;
-	// 	var width = Math.floor((1200-40)/3);
-	// 	var locationData = cityArray[city].location;
-	// 	var bearing = locationData.bearing;
-	// 	var pitch = locationData.pitch;
-	// 	console.log(locationData.center);
-	// 	var lat = locationData.center[1];
-	// 	var lng = locationData.center[0];
-	// 	var zoom = locationData.zoom;
-	// 	if(globalZoom){
-	// 		zoom = globalZoomAmount
-	// 	}
-	// 	var yearArray = [style_1975,style_1990,style_2015];
-	//
-	// 	d3.select(".image-wrapper")
-	// 		.append("div")
-	// 		.attr("class","years-wrapper")
-	// 		.selectAll("img")
-	// 		.data(yearArray)
-	// 		.enter()
-	// 		.append("img")
-	// 		.attr("src",function(d){
-	// 			var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+d+"/static/"+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"?access_token="+token;
-	// 			return imageLink
-	// 		})
-	//
-	//
-	//
-	// }
-
-	// const scroller = scrollama();
-	//
-	// function handleStepEnter(callback){
-	// 	console.log(callback);
-	// }
-	//
-	// function handleStepExit(callback){
-	// 	console.log(callback);
-	// }
-	//
-	// function handleStepProgress(callback){
-	// 	console.log(callback);
-	// }
-	//
-	// scroller.setup({
-	//   	step: '.step', // required - class name of trigger steps
-	// 		container: '.scroll', // required (for sticky)
-	// 		graphic: '.scroll__graphic' // required (for sticky)
-	// 	})
-	// 	.onStepEnter(handleStepEnter)
-	// 	.onStepProgress(handleStepProgress)
-	// 	.onStepExit(handleStepExit);
 
 	d3.json("assets/data/world.json",function(world){
 		var width = 70,
@@ -526,6 +513,7 @@ function init() {
 
 		var globeWrapper = swiperSlides
 			.filter(function(d,i){
+				console.log(i);
 				return i == 0;
 			})
 			.append("div")
