@@ -229,7 +229,7 @@ function init() {
 
 
 	d3.select(".intro-image").append("img").attr("src",function(){
-		return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+viewportWidth+"x"+Math.min(viewportHeight*.5,500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(viewportHeight*.5,500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 	})
 
 
