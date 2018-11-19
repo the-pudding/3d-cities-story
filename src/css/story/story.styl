@@ -1,3 +1,15 @@
+
+
+.break
+  width 100px
+  height 2px
+  background linear-gradient(90deg, #ca2e2a 30%, #ee9d6d 100%)
+  margin 0 auto
+  margin-bottom 40px
+  margin-top 40px
+  opacity .8
+
+
 .intro-image
   margin 0 auto
   margin-top 100px
@@ -26,9 +38,42 @@ header
   background none
 
 header.is-sticky
-  background #f7f7f7
+  background #262626
   position relative
   box-shadow none
+  height 142px
+  .header-sub
+    font-family 'Atlas Grotesk Web'
+    margin 0 auto
+    width 560px
+    text-align center
+    color rgba(255,255,255,.48)
+    padding-top 8px
+    &:hover
+      a
+
+        &:first-of-type
+          color #74b76e
+          border-color rgba(116,183,110,.2)
+        &:nth-of-type(2)
+          color #66b4c6
+          border-color rgba(102,180,198,.2)
+        &:nth-of-type(3)
+          color #eac478
+          border-color rgba(234,196,120,.2)
+        &:nth-of-type(4)
+          color #E26C5E
+          border-color rgba(226,108,81,.2)
+    a
+      color rgba(255,255,255,.48)
+      border-bottom 1px solid #444444
+      transition border-color .3s ease-out,color .3s ease-out
+      &:visited
+        color rgba(255,255,255,.48)
+        border-bottom 1px solid #444444
+  .header__toggle
+    svg
+      stroke white
   .intro__byline
     position absolute
     top 1rem
@@ -43,8 +88,10 @@ header.is-sticky
       border-bottom 1px solid #706677
       font-size 13px
   .logo
+    width 143px
+    padding-top 8px
     svg
-      fill rgba(90, 78, 82, 0.58)
+      fill white
 
 body
   background #f7f7f7
@@ -93,6 +140,10 @@ body
     color #772521
     font-size 80px
     margin-bottom 20px
+    font-family 'Atlas Grotesk Web'
+    font-weight 100
+    color #E14018
+    font-size 100px
 .scroll
   position relative
   display flex
@@ -133,6 +184,40 @@ body
     width 100%
     left 0px
     z-index 0
+    .legend
+      position absolute
+      bottom 50px
+      width 230px
+      padding 5px 10px
+      background white
+      left 0px
+      display flex
+      flex-wrap wrap
+      z-index 1000
+      .legend-title
+        width 100%
+        font-family 'Atlas Grotesk Web'
+        margin 0px
+        font-size 11px
+        font-weight 500
+        margin-bottom 5px
+        text-align center
+      .legend-box
+        width 20%
+        .legend-name
+          font-size 11px
+          font-weight 400
+          font-family 'Atlas Grotesk Web'
+          text-align center
+          margin 0px
+        .legend-color
+          width 100%
+          max-width 40px
+          margin 0 auto
+          height 10px
+
+          height 10px
+          display block
     #map
       height 100vh
       width 100%
@@ -150,13 +235,13 @@ body
     width 100%
     margin 0 auto
     .img-wrapper
-      padding-bottom 50px
+      margin-bottom 200px
       position relative
       width 100%
       .text-column
         max-width 550px
         margin 0 auto
-        margin-top 2rem
+        margin-top 3rem
         .city-name
           font-family 'Atlas Grotesk Web'
           text-align left
@@ -169,8 +254,10 @@ body
 
         .city-desc
           font-size 16px
-          color #667177
+          color #5a4e52
           font-family 'Atlas Grotesk Web'
+          span
+            font-weight 500
 
       .swiper-container
         //width calc(97.5% - 180px)
@@ -191,6 +278,36 @@ body
           z-index 1000
         .swiper-wrapper
           .swiper-slide
+            position relative
+            &:before
+              position absolute
+              content 'Loading...'
+              top 50%
+              left 0px
+              right 0px
+              margin 0 auto
+              text-align center
+              transform translate(0,calc(50% - 30px))
+              font-family 'Atlas Grotesk Web'
+              font-weight 400
+              z-index 0
+            img
+              display block
+              position relative
+              z-index 100
+            .globe-wrapper
+              position absolute
+              bottom 40px
+              z-index 1000
+              right 10px
+              //opacity .5
+              .globe-wrapper-svg-container
+                position absolute
+                width 20px
+                svg
+                  transform translate(-50%,-100%)
+                  path
+                    fill #d84846
             .mask-div
               background #F7F7F7
               position absolute
@@ -199,6 +316,34 @@ body
               left 0px
               height 30px
               width 100%
+            .overlay-div
+              position absolute
+              z-index 10000
+              width 100%
+              height 100%
+              svg
+                width 100%
+                height 100%
+                path
+                  stroke-width 1.5px
+                text
+                  tspan
+                    font-size 14px
+                    font-weight 400
+                    font-family 'Atlas Grotesk Web'
+            .city-title
+              position absolute
+              top 0px
+              left 0px
+              font-family 'Atlas Grotesk Web'
+              transform translate(0,calc(-100% - 5px))
+              margin 0px
+              right 0px
+              margin 0 auto
+              text-align center
+              font-size 16px
+              font-weight 500
+
             .border-div
               position absolute
               top 0px
@@ -208,7 +353,8 @@ body
               right 0px
               margin 0 auto
               top 50%
-              transform translate(0,calc(-50% - 20px))
+              z-index 1000
+              transform translate(0,calc(-50% - 0px))
               border 3px solid rgba(0, 0, 0, 0.55)
             &:first-of-type
               .border-div
@@ -216,6 +362,10 @@ body
                 top 0px
                 left 0px
                 transform none
+            &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5)
+              .border-div
+                opacity .7
+                border 1.5px solid rgba(0, 0, 0, 0.55)
         .fraction
           position absolute
           top 15px
@@ -261,14 +411,13 @@ body
         .swiper-pagination
           bottom 0px
           height 40px
-          padding-top 12px
+          padding-top 18px
           position absolute
           background #f7f7f7
           span
-            width 12px
-            height 12px
-        img
-          display block
+            width 11px
+            height 11px
+
 
   .years-wrapper
     display flex
@@ -289,17 +438,3 @@ body
     border none
   &:after
     display none
-
-
-.globe-wrapper
-  position absolute
-  bottom 40px
-  right 10px
-  //opacity .5
-  .globe-wrapper-svg-container
-    position absolute
-    width 20px
-    svg
-      transform translate(-50%,-100%)
-      path
-        fill #d84846
