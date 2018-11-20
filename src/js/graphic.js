@@ -89,7 +89,7 @@ function init() {
 			.addTo(controller); // assign the scene to the controller
 	}
 
-	setupInteractiveMap();
+	// setupInteractiveMap();
 	var style_1975 = "cjnn7622h02ph2smpyw7dhq4y";
 	var style_1990 = "cjnl0k08b88ai2slsjxzk0jii";
 	var style_2015 = "cjnel8krq2ltq2spteciqe2x3";
@@ -99,10 +99,50 @@ function init() {
 	var globalZoomAmount = 7;
 
 	var cityArray = [
+
+		{
+			city_name:"New York City",
+			city_id:"new_york_city",
+			population:"18.8M People",
+			city_text:"",
+			location:{
+				center:[-73.98,40.76],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-33.19,
+				pitch:60
+			}
+		},
+		{
+			city_name:"London",
+			city_id:"london",
+			population:"9M People",
+			city_text:"",
+			location:{
+				center:[-.23,51.43],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-19.59,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Singapore",
+			city_id:"singapore",
+			population:"5.7M People",
+			city_text:'Among these few cities, Singapore is among the most “planned,” and it isn’t expected to eclipse 10M people at its growth rate. In its background is Kuala Lumpur, a city that’s 2M people larger than Singapore but <a href="https://www.freemalaysiatoday.com/category/nation/2017/08/10/kl-risks-becoming-worlds-most-unplanned-city-says-mp/">far less planned</a>—note the lower density but larger footprint.<br><br>Let’s now tour 13 newer megacities and the “form” of their present-day populations.',
+			location:{
+				center:[103.838,1.411],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:8.63,
+				bearing:-38.48,
+				pitch:60
+			}
+		},
 		{
 			city_name:"Kinshasa",
 			city_id:"kinshasa",
-			city_text:"<span>KINSHASA (13.1M people)&mdash;</span> The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:'<span>KINSHASA (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
 			location:{
 				center:[15.31,-4.36],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -112,9 +152,9 @@ function init() {
 			}
 		},
 		{
-			city_name:"Hong Kong",
+			city_name:"Pearl River Delta",
 			city_id:"hong_kong",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:"<span>PEARL RIVER DELTA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). For all intents and purposes, they are close enough in proximity to form the largest urban agglomerations on earth, approaching 50 million people with non-stop urban density. This map would have looked much differently 30 years ago, when Shenzhen was was under 1M people and Guangzhou was 3.2M.",
 
 			location:{
 				center:[113.570587,22.78],
@@ -128,7 +168,7 @@ function init() {
 		{
 			city_name:"Bangalore",
 			city_id:"bangalore",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:"<span>BANGALORE (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is obvious is the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as covered by The Guardian, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”",
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -140,7 +180,7 @@ function init() {
 		{
 			city_name:"Luanda",
 			city_id:"luanda",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:"TBD",
 			location:{
 				center:[13.36,-8.705],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -152,7 +192,7 @@ function init() {
 		{
 			city_name:"Dar es Salaam",
 			city_id:"dar_es_salaam",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:"TBD",
 			location:{
 				center:[39.14,-6.845],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -164,7 +204,7 @@ function init() {
 		{
 			city_name:"Kuala Lumpur",
 			city_id:"kuala_lumpur",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+			city_text:"TBD",
 			location:{
 				center:[-84.386,33.754],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -172,7 +212,7 @@ function init() {
 				bearing:-16.8,
 				pitch:60
 			}
-		},
+		}
 		// {
 		// 	city_name:"Lagos",
 		// 	city_id:"lagos",
@@ -199,18 +239,6 @@ function init() {
 		// 		pitch:60
 		// 	}
 		// },
-		{
-			city_name:"London",
-			city_id:"london",
-			city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-			location:{
-				center:[-.23,51.43],
-				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-				zoom:7.13,
-				bearing:-19.59,
-				pitch:60
-			}
-		}
 		//,
 		// {
 		// 	city_name:"Paris",
@@ -301,10 +329,9 @@ function init() {
 
 	makeLegend();
 	//
-	d3.select(".intro-image").append("img").attr("src",function(){
-		return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(viewportHeight*.5,500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-	})
-
+	// d3.select(".intro-image").append("img").attr("src",function(){
+	// 	return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(viewportHeight*.5,500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+	// })
 
 		var widthChange = .90;
 		var imageCount = 2
@@ -447,8 +474,6 @@ function init() {
 
 		var slideData = ["close","medium","medium-two","medium-far","super-far"];
 
-
-
 		var swiperSlides = swiperWrapper.selectAll("div")
 			.data(slideData)
 			.enter()
@@ -464,7 +489,11 @@ function init() {
 			})
 			.append("p")
 			.attr("class","city-title")
-			.text(function(d,i){
+			.html(function(d,i){
+				var cityId = d3.select(this.parentNode.parentNode).datum().city_id;
+				if(["london","new_york_city","singapore"].indexOf(cityId) > -1){
+					return d3.select(this.parentNode.parentNode).datum().city_name + "<span>"+d3.select(this.parentNode.parentNode).datum().population+"</span>";
+				}
 				return d3.select(this.parentNode.parentNode).datum().city_name;
 			})
 
