@@ -1,3 +1,5 @@
+
+import Tracker from './utils/tracker';
 // import TweenMax from 'gsap/src/minified/TweenMax.min';
 // import ScrollMagic from 'scrollmagic/scrollmagic/minified/ScrollMagic.min';
 // import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
@@ -11,6 +13,22 @@ function init() {
 
 	function setupInteractiveMap(){
 		var startCoords = [-74.331,41.261];
+
+		var loadingOverlay = d3.select(".loading-overlay");
+		var percent = loadingOverlay.select(".percent");
+		var percentCount = 0;
+		function increment(){
+			percent.transition().duration(1000*Math.random()).on("end",function(d){
+				percentCount = percentCount + 1;
+				d3.select(this).text(percentCount+"%")
+				if(percentCount < 51){
+					increment();
+				}
+			})
+
+		}
+
+		increment();
 
 		mapboxgl.accessToken =
 			'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
@@ -28,7 +46,14 @@ function init() {
 		map.scrollZoom.disable();
 
 		map.on("load",function(d){
+			loadingOverlay.transition().duration(500).style("opacity",0).on("end",function(d){
+				d3.select(this).remove();
+			})
+			d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
+			d3.select("body").classed("map-hidden",false);
+			//
 			map.setLayoutProperty("place-city-large", 'visibility', 'visible');
+
 		})
 
 		var controller = new ScrollMagic.Controller();
@@ -89,7 +114,11 @@ function init() {
 			.addTo(controller); // assign the scene to the controller
 	}
 
-	// setupInteractiveMap();
+	d3.select(".header").select(".header-sub").selectAll("a").on("click",function(){
+		Tracker.send({ category: 'top-header-link-click', action: 'click', once: true });
+	})
+
+	setupInteractiveMap();
 	var style_1975 = "cjnn7622h02ph2smpyw7dhq4y";
 	var style_1990 = "cjnl0k08b88ai2slsjxzk0jii";
 	var style_2015 = "cjnel8krq2ltq2spteciqe2x3";
@@ -99,20 +128,20 @@ function init() {
 	var globalZoomAmount = 7;
 
 	var cityArray = [
-
 		{
-			city_name:"New York City",
-			city_id:"new_york_city",
-			population:"18.8M People",
+			city_name:"Paris",
+			city_id:"paris",
+			population:"10.9M People",
 			city_text:"",
 			location:{
-				center:[-73.98,40.76],
+				center:[2.228,48.88],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
 				zoom:7.13,
-				bearing:-33.19,
+				bearing:-19.59,
 				pitch:60
 			}
-		},
+		}
+		,
 		{
 			city_name:"London",
 			city_id:"london",
@@ -130,7 +159,7 @@ function init() {
 			city_name:"Singapore",
 			city_id:"singapore",
 			population:"5.7M People",
-			city_text:'Among these few cities, Singapore is among the most “planned,” and it isn’t expected to eclipse 10M people at its growth rate. In its background is Kuala Lumpur, a city that’s 2M people larger than Singapore but <a href="https://www.freemalaysiatoday.com/category/nation/2017/08/10/kl-risks-becoming-worlds-most-unplanned-city-says-mp/">far less planned</a>—note the lower density but larger footprint.<br><br>Let’s now tour 13 newer megacities and the “form” of their present-day populations.',
+			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which is 2 million people larger and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.',
 			location:{
 				center:[103.838,1.411],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -142,7 +171,7 @@ function init() {
 		{
 			city_name:"Kinshasa",
 			city_id:"kinshasa",
-			city_text:'<span>KINSHASA (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
+			city_text:'<span>KINSHASA, DRC (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
 			location:{
 				center:[15.31,-4.36],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -152,10 +181,58 @@ function init() {
 			}
 		},
 		{
+			city_name:"Luanda",
+			city_id:"luanda",
+			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> the city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world</a> (for expats) and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
+			location:{
+				center:[13.36,-8.705],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-21.6,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Lagos",
+			city_id:"lagos",
+			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimates of over 100M people).',
+			location:{
+				center:[3.172,6.719],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:0,
+				pitch:60
+			}
+		},
+		{
+			city_name:"Dar es Salaam",
+			city_id:'dar_es_salaam',
+			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030. CityLab <a href="https://www.citylab.com/design/2015/02/the-bright-future-of-dar-es-salaam-an-unlikely-african-megacity/385801/">wrote a relatively positive outlook for the city in 2015</a>, noting the rapid sprawl and informal housing has been coupled with comparatively lower poverty rates and rapid improved public transportation.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.',
+			location:{
+				center:[39.14,-6.845],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-21.6,
+				pitch:60
+			}
+		}
+		,
+		{
+			city_name:"Bangalore",
+			city_id:"bangalore",
+			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is obvious is the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			location:{
+				center:[77.511,13.109],
+				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+				zoom:7.13,
+				bearing:-23.18,
+				pitch:60
+			}
+		},
+		{
 			city_name:"Pearl River Delta",
 			city_id:"hong_kong",
-			city_text:"<span>PEARL RIVER DELTA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). For all intents and purposes, they are close enough in proximity to form the largest urban agglomerations on earth, approaching 50 million people with non-stop urban density. This map would have looked much differently 30 years ago, when Shenzhen was was under 1M people and Guangzhou was 3.2M.",
-
+			city_text:'<span>PEARL RIVER DELTA, CHINA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). Rapid growth has linked all the surrounding cities with contiguous urban density. It’s formed a mega-region that’s roughly <a href="https://www.theguardian.com/cities/2017/may/05/megaregions-endless-china-urbanisation-sprawl-xiongan-jingjinji">the size of the UK in population</a> and akin to the US’s northeast corridor (Boston, NYC, Philadelphia, Baltimore, and DC) merging into one enormous city.',
 			location:{
 				center:[113.570587,22.78],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -166,66 +243,96 @@ function init() {
 		}
 		,
 		{
-			city_name:"Bangalore",
-			city_id:"bangalore",
-			city_text:"<span>BANGALORE (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is obvious is the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as covered by The Guardian, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”",
+			city_name:"Chongqing",
+			city_id:"chongqing",
+			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many it’s size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
 			location:{
-				center:[77.511,13.109],
+				center:[106.547900,29.570338],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
 				zoom:7.13,
-				bearing:-23.18,
+				bearing:0,
 				pitch:60
 			}
 		},
 		{
-			city_name:"Luanda",
-			city_id:"luanda",
-			city_text:"TBD",
+			city_name:"Tianjin",
+			city_id:"tianjin",
+			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span> Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>. Nevertheless, the Chinese government seems determined to double-down on Beijing, combining it with the city of Tianjin and parts of Hebei province into one huge megalopolis. https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/',
 			location:{
-				center:[13.36,-8.705],
+				center:[117.077225,39.337146],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
 				zoom:7.13,
-				bearing:-21.6,
-				pitch:60
-			}
-		},
-		{
-			city_name:"Dar es Salaam",
-			city_id:"dar_es_salaam",
-			city_text:"TBD",
-			location:{
-				center:[39.14,-6.845],
-				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-				zoom:7.13,
-				bearing:-21.6,
-				pitch:60
-			}
-		},
-		{
-			city_name:"Kuala Lumpur",
-			city_id:"kuala_lumpur",
-			city_text:"TBD",
-			location:{
-				center:[-84.386,33.754],
-				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-				zoom:7.13,
-				bearing:-16.8,
+				bearing:0,
 				pitch:60
 			}
 		}
 		// {
-		// 	city_name:"Lagos",
-		// 	city_id:"lagos",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
+		// 	city_name:"New York City",
+		// 	city_id:"new_york_city",
+		// 	population:"18.8M People",
+		// 	city_text:"",
 		// 	location:{
-		// 		center:[3.32,6.58],
-		// 		pathString:"qeii@kzpSfftB{p_BzkeAf~vAiqxBzp_B",
+		// 		center:[-73.98,40.76],
+		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+		// 		zoom:7.13,
+		// 		bearing:-33.19,
+		// 		pitch:60
+		// 	}
+		// },
+
+		// {
+		// 	city_name:"Lahore",
+		// 	city_id:"lahore",
+		// 	city_text:"TBD",
+		// 	location:{
+		// 		center:[74.165629,31.511876],
+		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
 		// 		zoom:7.13,
 		// 		bearing:0,
 		// 		pitch:60
 		// 	}
 		// }
 		// ,
+		// {
+		// 	city_name:"Chengdu",
+		// 	city_id:"chengdu",
+		// 	city_text:"TBD",
+		// 	location:{
+		// 		center:[104.076330,30.989421],
+		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+		// 		zoom:7.13,
+		// 		bearing:0,
+		// 		pitch:60
+		// 	}
+		// }
+		// ,
+//		,
+		// {
+		// 	city_name:"Xi’an",
+		// 	city_id:"xian",
+		// 	city_text:"TBD",
+		// 	location:{
+		// 		center:[108.905231,34.280797],
+		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+		// 		zoom:7.13,
+		// 		bearing:0,
+		// 		pitch:60
+		// 	}
+		// }
+		//,
+		// {
+		// 	city_name:"Kuala Lumpur",
+		// 	city_id:"kuala_lumpur",
+		// 	city_text:"TBD",
+		// 	location:{
+		// 		center:[-84.386,33.754],
+		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
+		// 		zoom:7.13,
+		// 		bearing:-16.8,
+		// 		pitch:60
+		// 	}
+		// }
+
 
 		// {
 		// 	city_name:"New York City",
@@ -240,19 +347,7 @@ function init() {
 		// 	}
 		// },
 		//,
-		// {
-		// 	city_name:"Paris",
-		// 	city_id:"paris",
-		// 	city_text:"The world’s population centers are a lot different than 25 years ago. In 1993, there were 14 cities over 10 million people. Today, there are 34, with many of these new “megacities” sprouting from farmland in our lifetimes.",
-		// 	location:{
-		// 		center:[2.228,48.88],
-		// 		pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
-		// 		zoom:7.13,
-		// 		bearing:-19.59,
-		// 		pitch:60
-		// 	}
-		// }
-		//,
+
 		// {
 		// 	city_name:"Karachi",
 		// 	city_id:"kirachi",
@@ -329,9 +424,35 @@ function init() {
 
 	makeLegend();
 	//
-	// d3.select(".intro-image").append("img").attr("src",function(){
-	// 	return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(viewportHeight*.5,500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-	// })
+	d3.select(".intro-image").append("img").attr("src",function(){
+		return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*.5),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+	})
+
+	d3.select(".intro-image").append("img").attr("src",function(){
+		return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-26.55,-10.28,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*.5),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+	})
+
+	d3.select(".intro-image-two")
+		.append("img").attr("src",function(){
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/35.28,31.9,6,-8,60/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		})
+
+	d3.select(".intro-image-two")
+		.append("img").attr("src",function(){
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		})
+
+	d3.select(".intro-image-two")
+		.append("img").attr("src",function(){
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		})
+
+	d3.select(".intro-image-two")
+		.append("img").attr("src",function(){
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		})
+
+
 
 		var widthChange = .90;
 		var imageCount = 2
@@ -491,7 +612,7 @@ function init() {
 			.attr("class","city-title")
 			.html(function(d,i){
 				var cityId = d3.select(this.parentNode.parentNode).datum().city_id;
-				if(["london","new_york_city","singapore"].indexOf(cityId) > -1){
+				if(["london","paris","singapore"].indexOf(cityId) > -1){
 					return d3.select(this.parentNode.parentNode).datum().city_name + "<span>"+d3.select(this.parentNode.parentNode).datum().population+"</span>";
 				}
 				return d3.select(this.parentNode.parentNode).datum().city_name;
@@ -559,7 +680,7 @@ function init() {
 		var fraction = imgBoxWrapper
 			.append("p")
 			.attr("class","fraction")
-			.text("1/"+Math.ceil(slideData.length-1))
+			.text("1/"+Math.ceil(slideData.length))
 
 		var toggle = imgBoxWrapper
 			.append("div")
@@ -655,8 +776,10 @@ function init() {
 				},
 			});
 
+			console.log(d);
+
 			d.swiper.on('slideChange', function() {
-			 	elem.select(".fraction").text((d.swiper.activeIndex+1)+"/"+Math.ceil(slideData.length-1))
+			 	elem.select(".fraction").text((d.swiper.activeIndex+1)+"/"+Math.ceil(slideData.length))
 			});
 
 		})

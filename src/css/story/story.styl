@@ -1,4 +1,27 @@
+.loading-overlay
+  position absolute
+  width 100%
+  height 100%
+  top 0px
+  left 0px
+  background #F7F7F7
+  display flex
+  flex-direction column
+  justify-content center
+  p
+    text-align center
+    margin 0px
+    font-family 'Atlas Grotesk Web'
+    font-size 18px
+  .percent
+    font-weight 500
+    font-size 24px
+.map-hidden
+  height 100%
+  overflow hidden
 
+.map-not-loaded
+  text-align center
 
 .break
   width 100px
@@ -14,26 +37,38 @@
   margin 0 auto
   margin-top 100px
   max-width 1280px
+  margin-bottom 50px
+
+.intro-image-two
+  display flex
+  margin-top 20px
+  margin-bottom 100px
+  justify-content space-between
+  flex-wrap wrap
+  img
+    width calc(50% - 25px)
+    height calc(50% - 25px)
+    margin-top 25px
+    border-bottom 2px solid #c7c7c7
 
 .centered
   p
-    text-align center
-    margin 0px
-    background white
+    text-align left
+    //margin 0px
+    //background white
+    font-size 16px
     margin 0 auto
     //position absolute
-    z-index 1000
-    width 300px
-    font-size 14px
-    text-align center
-    padding 10px 10px
+    //z-index 1000
+    //width 300px
+    //padding 10px 10px
     //top 50%
     //left 50%
     //transform translate(-100%,0%)
-    border-radius 5px
-    box-shadow 0px 3px 3px 1px rgba(0, 0, 0, 0.11)
+    //border-radius 5px
+    //box-shadow 0px 3px 3px 1px rgba(0, 0, 0, 0.11)
     font-family 'Atlas Grotesk Web'
-    border 1px solid #d0cccc
+    //border 1px solid #d0cccc
 header
   background none
 
@@ -164,8 +199,9 @@ body
         //position absolute
         z-index 1000
         width 300px
-        font-size 14px
-        text-align center
+        font-size 16px
+        color #5a4e52
+        text-align left
         padding 10px 10px
         //top 50%
         //left 50%
@@ -281,6 +317,20 @@ body
         .swiper-wrapper
           .swiper-slide
             position relative
+            &:after
+              position absolute
+              content 'Size scale: 1:4M'
+              top 0px
+              left 0px
+              background white
+              z-index 100
+              transform translate(0,0%)
+              width 100px
+              margin 0
+              font-size 11px
+              line-height 2
+              font-family 'Atlas Grotesk Web'
+              text-align center
             &:before
               position absolute
               content 'Loading...'
@@ -367,6 +417,20 @@ body
                 top 0px
                 left 0px
                 transform none
+            &:nth-of-type(2)
+              &:after
+                content 'Size scale: 1:10M'
+
+            &:nth-of-type(3)
+              &:after
+                content 'Size scale: 1:15M'
+
+            &:nth-of-type(4)
+              &:after
+                content 'Size scale: 1:35M'
+            &:nth-of-type(5)
+              &:after
+                content 'Size scale: 1:70M'
             &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5)
               .border-div
                 opacity .7
