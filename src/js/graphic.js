@@ -17,15 +17,21 @@ function init() {
 		var loadingOverlay = d3.select(".loading-overlay");
 		var percent = loadingOverlay.select(".percent");
 		var percentCount = 0;
+		var duration = 50;
 		function increment(){
-			percent.transition().duration(1000*Math.random()).on("end",function(d){
+			percent.transition().duration(duration).on("end",function(d){
 				percentCount = percentCount + 1;
 				d3.select(this).text(percentCount+"%")
-				if(percentCount < 51){
+				if(percentCount == 31 || percentCount == 12 || percentCount == 38 || percentCount == 21 || percentCount == 66 || percentCount == 88){
+					duration = 750
+				}
+				else {
+					duration = 50;
+				}
+				if(percentCount < 100){
 					increment();
 				}
 			})
-
 		}
 
 		increment();
@@ -46,13 +52,13 @@ function init() {
 		map.scrollZoom.disable();
 
 		map.on("load",function(d){
-			loadingOverlay.transition().duration(500).style("opacity",0).on("end",function(d){
-				d3.select(this).remove();
-			})
-			d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
-			d3.select("body").classed("map-hidden",false);
+			// loadingOverlay.transition().duration(500).style("opacity",0).on("end",function(d){
+			// 	d3.select(this).remove();
+			// })
+			// d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
+			// d3.select("body").classed("map-hidden",false);
 			//
-			map.setLayoutProperty("place-city-large", 'visibility', 'visible');
+			// map.setLayoutProperty("place-city-large", 'visibility', 'visible');
 
 		})
 
@@ -118,7 +124,7 @@ function init() {
 		Tracker.send({ category: 'top-header-link-click', action: 'click', once: true });
 	})
 
-	setupInteractiveMap();
+	// setupInteractiveMap();
 	var style_1975 = "cjnn7622h02ph2smpyw7dhq4y";
 	var style_1990 = "cjnl0k08b88ai2slsjxzk0jii";
 	var style_2015 = "cjnel8krq2ltq2spteciqe2x3";
@@ -159,7 +165,7 @@ function init() {
 			city_name:"Singapore",
 			city_id:"singapore",
 			population:"5.7M People",
-			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which is 2 million people larger and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.',
+			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which is 2 million people larger and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.<br><br><span class="title-break">African Megacities (future and present)</span>',
 			location:{
 				center:[103.838,1.411],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -171,6 +177,7 @@ function init() {
 		{
 			city_name:"Kinshasa",
 			city_id:"kinshasa",
+			population:"13.1M People",
 			city_text:'<span>KINSHASA, DRC (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
 			location:{
 				center:[15.31,-4.36],
@@ -183,6 +190,7 @@ function init() {
 		{
 			city_name:"Luanda",
 			city_id:"luanda",
+			population:"7.7M People",
 			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> the city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world</a> (for expats) and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
 			location:{
 				center:[13.36,-8.705],
@@ -195,6 +203,7 @@ function init() {
 		{
 			city_name:"Lagos",
 			city_id:"lagos",
+			population:"13M People",
 			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimates of over 100M people).',
 			location:{
 				center:[3.172,6.719],
@@ -207,7 +216,8 @@ function init() {
 		{
 			city_name:"Dar es Salaam",
 			city_id:'dar_es_salaam',
-			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030. CityLab <a href="https://www.citylab.com/design/2015/02/the-bright-future-of-dar-es-salaam-an-unlikely-african-megacity/385801/">wrote a relatively positive outlook for the city in 2015</a>, noting the rapid sprawl and informal housing has been coupled with comparatively lower poverty rates and rapid improved public transportation.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.',
+			population:"6M People",
+			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030. CityLab <a href="https://www.citylab.com/design/2015/02/the-bright-future-of-dar-es-salaam-an-unlikely-african-megacity/385801/">wrote a relatively positive outlook for the city in 2015</a>, noting the rapid sprawl and informal housing has been coupled with comparatively lower poverty rates and rapid improved public transportation.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Megacities (future and present)</span>',
 			location:{
 				center:[39.14,-6.845],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -220,6 +230,7 @@ function init() {
 		{
 			city_name:"Bangalore",
 			city_id:"bangalore",
+			population:"11.4M People",
 			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is obvious is the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
@@ -232,6 +243,7 @@ function init() {
 		{
 			city_name:"Pearl River Delta",
 			city_id:"hong_kong",
+			population:"50M-100M People",
 			city_text:'<span>PEARL RIVER DELTA, CHINA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). Rapid growth has linked all the surrounding cities with contiguous urban density. It’s formed a mega-region that’s roughly <a href="https://www.theguardian.com/cities/2017/may/05/megaregions-endless-china-urbanisation-sprawl-xiongan-jingjinji">the size of the UK in population</a> and akin to the US’s northeast corridor (Boston, NYC, Philadelphia, Baltimore, and DC) merging into one enormous city.',
 			location:{
 				center:[113.570587,22.78],
@@ -245,6 +257,7 @@ function init() {
 		{
 			city_name:"Chongqing",
 			city_id:"chongqing",
+			population:"14.8M People",
 			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many it’s size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
 			location:{
 				center:[106.547900,29.570338],
@@ -257,6 +270,7 @@ function init() {
 		{
 			city_name:"Tianjin",
 			city_id:"tianjin",
+			population:"13.2M People",
 			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span> Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>. Nevertheless, the Chinese government seems determined to double-down on Beijing, combining it with the city of Tianjin and parts of Hebei province into one huge megalopolis. https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/',
 			location:{
 				center:[117.077225,39.337146],
@@ -433,23 +447,27 @@ function init() {
 	})
 
 	d3.select(".intro-image-two")
+		.append("div")
 		.append("img").attr("src",function(){
-			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/35.28,31.9,6,-8,60/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/35.28,31.9,6,-8,60/"+Math.floor(Math.min(1280,(viewportWidth/2)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		})
 
 	d3.select(".intro-image-two")
+		.append("div")
 		.append("img").attr("src",function(){
-			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/2)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		})
 
 	d3.select(".intro-image-two")
+		.append("div")
 		.append("img").attr("src",function(){
-			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/2)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		})
 
 	d3.select(".intro-image-two")
+		.append("div")
 		.append("img").attr("src",function(){
-			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/2 - 25)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/2)))+"x"+Math.floor(Math.min(viewportHeight*.5,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		})
 
 
@@ -612,10 +630,7 @@ function init() {
 			.attr("class","city-title")
 			.html(function(d,i){
 				var cityId = d3.select(this.parentNode.parentNode).datum().city_id;
-				if(["london","paris","singapore"].indexOf(cityId) > -1){
-					return d3.select(this.parentNode.parentNode).datum().city_name + "<span>"+d3.select(this.parentNode.parentNode).datum().population+"</span>";
-				}
-				return d3.select(this.parentNode.parentNode).datum().city_name;
+				return d3.select(this.parentNode.parentNode).datum().city_name + "<span>"+d3.select(this.parentNode.parentNode).datum().population+"</span>";
 			})
 
 		var overlayDiv = swiperSlides

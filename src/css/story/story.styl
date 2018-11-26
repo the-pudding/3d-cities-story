@@ -1,3 +1,32 @@
+.recirculation-container
+  background #f2ece0
+  padding-top 50px
+  padding-bottom 50px
+  .recirculation-container-title
+      font-family 'Atlas Grotesk Web'
+      text-align center
+      margin 0 auto
+      font-weight 500
+      margin-bottom 20px
+      color #755821
+      font-size 36px
+  .recirculation-wrapper
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    width 90%
+    margin 0 auto
+
+
+.footer-social
+  display none
+
+.title-break
+  font-size 24px
+  margin-bottom 40px
+  margin-top 50px
+  display block
+
 .loading-overlay
   position absolute
   width 100%
@@ -39,18 +68,49 @@
   max-width 1280px
   margin-bottom 50px
 
+.chart-title
+  font-family 'Atlas Grotesk Web'
+  font-weight 500
+  text-align center
+  font-size 14px
+  margin 0px
+  margin-top 50px
+  margin-bottom 30px
+
 .intro-image-two
   display flex
-  margin-top 20px
-  margin-bottom 100px
+  margin-bottom 70px
   justify-content space-between
   flex-wrap wrap
-  img
-    width calc(50% - 25px)
-    height calc(50% - 25px)
-    margin-top 25px
-    border-bottom 2px solid #c7c7c7
+  div
+    width calc(50%)
+    height calc(50%)
+    position relative
+    &:before
+      position absolute
+      content ''
+      box-sizing border-box
+      border 1px solid rgba(0, 0, 0, 0.10)
+      width 100%
+      height 100%
+      display block
+      z-index 100
+    &:first-of-type,&:nth-of-type(3)
+      &:before
+        border-left none
+    &:last-of-type,&:nth-of-type(2)
+      &:before
+        border-right none
+    &:first-of-type,&:nth-of-type(2)
+      &:before
+        border-top 2px solid rgba(0, 0, 0, 0.10)
+    &:last-of-type,&:nth-of-type(3)
+      &:before
+        border-bottom 2px solid rgba(0, 0, 0, 0.10)
+    img
 
+      position relative
+      //border 2px solid #c7c7c7
 .centered
   p
     text-align left
@@ -211,9 +271,10 @@ body
         font-family 'Atlas Grotesk Web'
         border 1px solid #d0cccc
         .red
-          background rgba(243, 156, 105, 0.658)
+          background rgba(221, 75, 69, 0.54)
           padding 0 5px
-          font-weight 500
+          color black
+          font-weight 400
   .scroll__graphic
     position absolute
     top 0px
@@ -271,9 +332,11 @@ body
     width 100%
     margin 0 auto
     .img-wrapper
-      margin-bottom 150px
+      margin-bottom 50px
       position relative
       width 100%
+      &:first-of-type
+        margin-bottom 150px
       &:nth-of-type(1), &:nth-of-type(2)
         margin 0 auto
       .text-column
@@ -304,10 +367,22 @@ body
         max-width 920px
         position relative
         overflow visible
+        &:before
+          position absolute
+          content ''
+          height 40px
+          left 0px
+          right auto
+          bottom 0px
+          width 200%
+          //width calc((100vw - 920px)/2)
+          transform translate(-33%,0)
+          background #F7F7F7
+          z-index 10
         &:after
           position absolute
           content ''
-          height 100%
+          height calc(100% - 30px)
           right 0px
           top 0px
           width calc((100vw - 920px)/2)
@@ -320,13 +395,14 @@ body
             &:after
               position absolute
               content 'Size scale: 1:4M'
-              top 0px
+              top calc(100% - 40px)
               left 0px
               background white
               z-index 100
-              transform translate(0,0%)
+              transform translate(0,-100%)
               width 100px
               margin 0
+              padding-bottom 2px
               font-size 11px
               line-height 2
               font-family 'Atlas Grotesk Web'
