@@ -1,3 +1,7 @@
+
+
+
+
 .recirculation-container
   background #f2ece0
   padding-top 50px
@@ -16,6 +20,18 @@
     justify-content space-between
     width 90%
     margin 0 auto
+    .twitter-tweet
+      width 50%
+
+  .mobile-only
+    display none
+    @media (max-width 500px)
+      display block
+
+  .desktop-only
+    @media (max-width 500px)
+      display none
+
 
 
 .footer-social
@@ -86,6 +102,9 @@
     width calc(50%)
     height calc(50%)
     position relative
+    @media (max-width 500px)
+      width 100%
+      margin-bottom 30px
     &:before
       position absolute
       content ''
@@ -95,6 +114,8 @@
       height 100%
       display block
       z-index 100
+      @media (max-width 500px)
+        display none
     &:first-of-type,&:nth-of-type(3)
       &:before
         border-left none
@@ -137,6 +158,10 @@ header.is-sticky
   position relative
   box-shadow none
   height 142px
+  @media (max-width 500px)
+    height 160px
+  @media (max-width 400px)
+    height auto
   .header-sub
     font-family 'Atlas Grotesk Web'
     margin 0 auto
@@ -144,6 +169,14 @@ header.is-sticky
     text-align center
     color rgba(255,255,255,.48)
     padding-top 8px
+    @media (max-width 600px)
+      width 90%
+    @media (max-width 500px)
+      font-size 16px
+    @media (max-width 400px)
+      font-size 12px
+      width 95%
+      padding-bottom 20px
     &:hover
       a
 
@@ -239,6 +272,12 @@ body
     font-weight 100
     color #E14018
     font-size 100px
+    @media (max-width 600px)
+      font-size 90px
+    @media (max-width 500px)
+      font-size 70px
+    @media (max-width 400px)
+      font-size 60px
 .scroll
   position relative
   display flex
@@ -363,10 +402,17 @@ body
       .swiper-container
         //width calc(97.5% - 180px)
         //margin-left 200px
-        width 90%
+        width calc(100% - 50px)
         max-width 920px
         position relative
         overflow visible
+        @media (max-width: 920px)
+          &:after
+            display none
+        @media (max-width: 500px)
+          width calc(100% - 100px)
+        @media (max-width: 400px)
+          width calc(100% - 20px)
         &:before
           position absolute
           content ''
@@ -493,6 +539,7 @@ body
                 top 0px
                 left 0px
                 transform none
+                right auto
             &:nth-of-type(2)
               &:after
                 content 'Size scale: 1:10M'
@@ -559,6 +606,14 @@ body
           padding-top 18px
           position absolute
           background #f7f7f7
+          @media (max-width 440px)
+            span
+              &:first-of-type
+                margin-left 30px
+          @media (max-width 350px)
+            span
+              &:first-of-type
+                margin-left 60px
           span
             width 11px
             height 11px
