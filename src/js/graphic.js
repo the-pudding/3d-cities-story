@@ -70,19 +70,19 @@ function init() {
 			percent.transition().duration(duration).on("end",function(d){
 				percentCount = percentCount + 1;
 				d3.select(this).text(percentCount+"%")
-				if(percentCount == 31 || percentCount == 12 || percentCount == 38 || percentCount == 21 || percentCount == 66 || percentCount == 88){
-					duration = 750
-				}
-				else {
-					duration = 50;
-				}
-				if(percentCount < 100){
-					increment();
-				}
+				// if(percentCount == 31 || percentCount == 12 || percentCount == 38 || percentCount == 21 || percentCount == 66 || percentCount == 88){
+				// 	duration = 750
+				// }
+				// else {
+				// 	duration = 50;
+				// }
+				// if(percentCount < 100){
+				// 	increment();
+				// }
 			})
 		}
 
-		increment();
+		// increment();
 
 		mapboxgl.accessToken =
 			'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
@@ -99,18 +99,61 @@ function init() {
 		});
 		map.scrollZoom.disable();
 
+		var tileCount = false;
+		var keyFound = false;
+
+		map.on("data",function(d){
+			console.log(d);
+			console.log("data");
+			if(d.hasOwnProperty('tile') && !keyFound){
+				keyFound = true;
+				console.timeEnd("fallback")
+				clearTimeout(fallBack);
+
+				loadingOverlay.transition().duration(1000).style("opacity",0).on("end",function(d){
+					d3.select(this).remove();
+				})
+				d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
+				d3.select("body").classed("map-hidden",false);
+				
+			}
+		})
+
+		//
+		// map.on("styledata",function(d){
+		// 	console.log("style data");
+		// })
+		//
+		// map.on("sourcedata",function(d){
+		// 	console.log("source data");
+		// })
+		map.on("render",function(d){
+			console.log(d);
+			console.log("render");
+			increment();
+		})
+
+		map.on("dataloading",function(d){
+			console.log("data loading");
+			increment();
+		})
+
+
+		map.on("styledataloading",function(d){
+			console.log("styledataloading");
+			increment();
+		})
+
+		map.on("sourcedataloading",function(d){
+			console.log("sourcedataloading");
+			increment();
+		})
+		//
 		map.on("load",function(d){
 			console.log("map loaded");
-			console.timeEnd("fallback")
-			clearTimeout(fallBack);
+
 			addStoryImages();
-			// loadingOverlay.transition().duration(500).style("opacity",0).on("end",function(d){
-			// 	d3.select(this).remove();
-			// })
-			// d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
-			// d3.select("body").classed("map-hidden",false);
-			//
-			// map.setLayoutProperty("place-city-large", 'visibility', 'visible');
+			map.setLayoutProperty("place-city-large", 'visibility', 'visible');
 
 		})
 
