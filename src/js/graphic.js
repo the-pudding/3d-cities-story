@@ -43,10 +43,8 @@ function init() {
 		// 		return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		// 	})
 
-		console.log(viewportWidth/countPerRow);
-
 		d3.select(".intro-image-two")
-			// .append("div")
+			.append("div")
 			.append("img")
 			.attr("src",function(){
 				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
@@ -56,7 +54,7 @@ function init() {
 			;
 
 		d3.select(".intro-image-two")
-			// .append("div")
+			.append("div")
 			.append("img")
 			.attr("src",function(){
 				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
@@ -115,8 +113,6 @@ function init() {
 		var keyFound = false;
 
 		map.on("data",function(d){
-			console.log(d);
-			console.log("data");
 			if(d.hasOwnProperty('tile') && !keyFound){
 				keyFound = true;
 				console.timeEnd("fallback")
@@ -140,30 +136,23 @@ function init() {
 		// 	console.log("source data");
 		// })
 		map.on("render",function(d){
-			console.log(d);
-			console.log("render");
 			increment();
 		})
 
 		map.on("dataloading",function(d){
-			console.log("data loading");
 			increment();
 		})
 
 
 		map.on("styledataloading",function(d){
-			console.log("styledataloading");
 			increment();
 		})
 
 		map.on("sourcedataloading",function(d){
-			console.log("sourcedataloading");
 			increment();
 		})
 		//
 		map.on("load",function(d){
-			console.log("map loaded");
-
 			addStoryImages();
 			map.setLayoutProperty("place-city-large", 'visibility', 'visible');
 
@@ -202,7 +191,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},15000);
+		},500);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
@@ -374,7 +363,7 @@ function init() {
 			city_name:"Bangalore",
 			city_id:"bangalore",
 			population:"11.4 million People",
-			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India.”) The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -401,7 +390,7 @@ function init() {
 			city_name:"Chongqing",
 			city_id:"chongqing",
 			population:"14.8 million People",
-			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many it’s size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
+			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many its size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
 			location:{
 				center:[106.547900,29.570338],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -899,7 +888,6 @@ function init() {
 			});
 
 			d.swiper.on('click', function(e) {
-			 	console.log("click");
 				if(d.swiper.activeIndex == 0 && d.swiper.clickedIndex == 0){
 					d.swiper.slideTo(1);
 				}
@@ -1000,7 +988,6 @@ function init() {
 		})
 		.on("enter", function (event) {
 			if(!slideImagesbuild){
-				console.log("building images");
 				buildImages();
 			}
 		})

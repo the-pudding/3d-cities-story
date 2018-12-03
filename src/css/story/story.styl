@@ -111,8 +111,24 @@
   margin-bottom 70px
   justify-content center
   flex-wrap wrap
-  img
+  div
     outline 2px solid rgba(0, 0, 0, 0.10)
+    position relative
+    &:after
+      position absolute
+      content 'Map scale: 1:10M'
+      top calc(100% - 20px)
+      right 0px
+      background white
+      z-index 100
+      transform translate(0,-100%)
+      width 100px
+      margin 0
+      padding-bottom 2px
+      font-size 11px
+      line-height 2
+      font-family 'Atlas Grotesk Web'
+      text-align center
     &:first-of-type
       margin-right 20px
     @media (max-width: 600px)
@@ -292,10 +308,10 @@ body
         font-family 'Atlas Grotesk Web'
         border 1px solid #d0cccc
         .red
-          background rgba(221, 75, 69, 0.54)
+          background rgb(221, 75, 69)
           padding 0 5px
-          color black
-          font-weight 400
+          color white
+          font-weight 500
   .scroll__graphic
     position absolute
     top 0px
