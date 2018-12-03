@@ -191,7 +191,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},500);
+		},15000);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
@@ -323,7 +323,7 @@ function init() {
 			city_name:"Luanda",
 			city_id:"luanda",
 			population:"7.7 million People",
-			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> the city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world for expats</a> and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
+			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> The city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world for expats</a> and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
 			location:{
 				center:[13.36,-8.705],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
