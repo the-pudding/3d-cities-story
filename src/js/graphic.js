@@ -18,42 +18,54 @@ function init() {
 		console.log("ADDING STORY IMAGES");
 		d3.select(".intro-image").append("img").attr("src",function(){
 			if(viewportWidth < 600){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/95,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/95,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			}
-			return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/71.02,-1.29,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 		})
 
 		d3.select(".intro-image").append("img").attr("src",function(){
 			if(viewportWidth < 600){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-97.677,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-97.677,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			}
-			return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-26.55,-10.28,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),500)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-26.55,-10.28,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 
 		})
 
-		d3.select(".intro-image-two")
-			.append("div")
-			.append("img").attr("src",function(){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/35.28,31.9,6,-8,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-			})
+		// d3.select(".intro-image-two")
+		// 	.append("div")
+		// 	.append("img").attr("src",function(){
+		// 		return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/35.28,31.9,6,-8,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		// 	})
+		//
+		// d3.select(".intro-image-two")
+		// 	.append("div")
+		// 	.append("img").attr("src",function(){
+		// 		return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+		// 	})
+
+		console.log(viewportWidth/countPerRow);
 
 		d3.select(".intro-image-two")
-			.append("div")
-			.append("img").attr("src",function(){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/126.79,37.38,6,-12.7,36.5/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			// .append("div")
+			.append("img")
+			.attr("src",function(){
+				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			})
+			.style("width",Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px")
+			.style("height",Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px")
+			;
 
 		d3.select(".intro-image-two")
-			.append("div")
-			.append("img").attr("src",function(){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			// .append("div")
+			.append("img")
+			.attr("src",function(){
+				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			})
+			.style("width",Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px")
+			.style("height",Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px")
 
-		d3.select(".intro-image-two")
-			.append("div")
-			.append("img").attr("src",function(){
-				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,500))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-			})
+			;
+
 
 	}
 
@@ -190,7 +202,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},500);
+		},15000);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
@@ -348,7 +360,7 @@ function init() {
 			city_name:"Dar es Salaam",
 			city_id:'dar_es_salaam',
 			population:"6 million People",
-			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030. CityLab <a href="https://www.citylab.com/design/2015/02/the-bright-future-of-dar-es-salaam-an-unlikely-african-megacity/385801/">wrote a relatively positive outlook for the city in 2015</a>, noting the rapid sprawl and informal housing has been coupled with comparatively lower poverty rates and rapid improved public transportation.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Megacities (future and present)</span>',
+			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030 and will be 10 million people by 2030. Just 20 years ago, the city was just 2 million in size.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Cities</span>',
 			location:{
 				center:[39.14,-6.845],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -402,7 +414,7 @@ function init() {
 			city_name:"Tianjin",
 			city_id:"tianjin",
 			population:"13.2 million People",
-			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span> Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>. Nevertheless, the Chinese government seems determined to double-down on Beijing, combining it with the city of Tianjin and parts of Hebei province into one huge megalopolis. https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/',
+			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span>Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new nearby city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>, which will be <a href="https://qz.com/198337/chinas-new-megalopolis-would-be-bigger-than-uruguay-and-more-populous-than-germany"/>one big one huge megalopolis</a> with over 100 million people.',
 			location:{
 				center:[117.077225,39.337146],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -576,7 +588,7 @@ function init() {
 
 
 
-	var viewportHeightAdjust = .5;
+	var viewportHeightAdjust = .65;
 	var countPerRow = 2;
 	if(viewportWidth < 600){
 		viewportHeightAdjust = .75
@@ -884,6 +896,13 @@ function init() {
 
 			d.swiper.on('slideChange', function() {
 			 	elem.select(".fraction").text((d.swiper.activeIndex+1)+"/"+Math.ceil(slideData.length))
+			});
+
+			d.swiper.on('click', function(e) {
+			 	console.log("click");
+				if(d.swiper.activeIndex == 0 && d.swiper.clickedIndex == 0){
+					d.swiper.slideTo(1);
+				}
 			});
 
 		})
