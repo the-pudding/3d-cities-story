@@ -17,11 +17,14 @@
   .recirculation-wrapper
     display flex
     flex-wrap wrap
-    justify-content space-between
+    justify-content center
     width 90%
     margin 0 auto
+
+
     .twitter-tweet
       width 50%
+
 
   .mobile-only
     display none
@@ -29,6 +32,9 @@
       display block
 
   .desktop-only
+    .twitter-tweet
+      &:first-of-type
+        margin-right 20px
     @media (max-width 500px)
       display none
 
