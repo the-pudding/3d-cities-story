@@ -115,7 +115,7 @@ function init() {
 				})
 				d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
 				d3.select("body").classed("map-hidden",false);
-				
+
 			}
 		})
 
@@ -163,6 +163,10 @@ function init() {
 		var fallBack = setTimeout(function(){
 			console.timeEnd("fallback")
 			console.log("falling back");
+			d3.select("body").classed("map-hidden",false);
+			loadingOverlay.transition().duration(1000).style("opacity",0).on("end",function(d){
+				d3.select(this).remove();
+			})
 			map.remove();
 			d3.select(".scroll").classed("image-only",true);
 			d3.selectAll(".step").append("div").attr("class","fallback-image")
@@ -186,7 +190,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},30000);
+		},500);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
@@ -264,7 +268,7 @@ function init() {
 		{
 			city_name:"Paris",
 			city_id:"paris",
-			population:"10.9M People",
+			population:"10.9 million People",
 			city_text:"",
 			location:{
 				center:[2.228,48.88],
@@ -278,7 +282,7 @@ function init() {
 		{
 			city_name:"London",
 			city_id:"london",
-			population:"9M People",
+			population:"9 million People",
 			city_text:"",
 			location:{
 				center:[-.23,51.43],
@@ -291,7 +295,7 @@ function init() {
 		{
 			city_name:"Singapore",
 			city_id:"singapore",
-			population:"5.7M People",
+			population:"5.7 million People",
 			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which is 2 million people larger and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.<br><br><span class="title-break">African Megacities (future and present)</span>',
 			location:{
 				center:[103.838,1.411],
@@ -304,7 +308,7 @@ function init() {
 		{
 			city_name:"Kinshasa",
 			city_id:"kinshasa",
-			population:"13.1M People",
+			population:"13.1 million People",
 			city_text:'<span>KINSHASA, DRC (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
 			location:{
 				center:[15.31,-4.36],
@@ -317,8 +321,8 @@ function init() {
 		{
 			city_name:"Luanda",
 			city_id:"luanda",
-			population:"7.7M People",
-			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> the city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world</a> (for expats) and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
+			population:"7.7 million People",
+			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> the city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world for expats</a> and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
 			location:{
 				center:[13.36,-8.705],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -330,7 +334,7 @@ function init() {
 		{
 			city_name:"Lagos",
 			city_id:"lagos",
-			population:"13M People",
+			population:"13 million People",
 			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimates of over 100M people).',
 			location:{
 				center:[3.172,6.719],
@@ -343,7 +347,7 @@ function init() {
 		{
 			city_name:"Dar es Salaam",
 			city_id:'dar_es_salaam',
-			population:"6M People",
+			population:"6 million People",
 			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030. CityLab <a href="https://www.citylab.com/design/2015/02/the-bright-future-of-dar-es-salaam-an-unlikely-african-megacity/385801/">wrote a relatively positive outlook for the city in 2015</a>, noting the rapid sprawl and informal housing has been coupled with comparatively lower poverty rates and rapid improved public transportation.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Megacities (future and present)</span>',
 			location:{
 				center:[39.14,-6.845],
@@ -357,8 +361,8 @@ function init() {
 		{
 			city_name:"Bangalore",
 			city_id:"bangalore",
-			population:"11.4M People",
-			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is obvious is the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			population:"11.4 million People",
+			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -370,7 +374,7 @@ function init() {
 		{
 			city_name:"Pearl River Delta",
 			city_id:"hong_kong",
-			population:"50M-100M People",
+			population:"50-100 million People",
 			city_text:'<span>PEARL RIVER DELTA, CHINA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). Rapid growth has linked all the surrounding cities with contiguous urban density. It’s formed a mega-region that’s roughly <a href="https://www.theguardian.com/cities/2017/may/05/megaregions-endless-china-urbanisation-sprawl-xiongan-jingjinji">the size of the UK in population</a> and akin to the US’s northeast corridor (Boston, NYC, Philadelphia, Baltimore, and DC) merging into one enormous city.',
 			location:{
 				center:[113.570587,22.78],
@@ -384,7 +388,7 @@ function init() {
 		{
 			city_name:"Chongqing",
 			city_id:"chongqing",
-			population:"14.8M People",
+			population:"14.8 million People",
 			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many it’s size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
 			location:{
 				center:[106.547900,29.570338],
@@ -397,7 +401,7 @@ function init() {
 		{
 			city_name:"Tianjin",
 			city_id:"tianjin",
-			population:"13.2M People",
+			population:"13.2 million People",
 			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span> Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>. Nevertheless, the Chinese government seems determined to double-down on Beijing, combining it with the city of Tianjin and parts of Hebei province into one huge megalopolis. https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/',
 			location:{
 				center:[117.077225,39.337146],
@@ -750,7 +754,7 @@ function init() {
 			})
 			.append("div")
 			.attr("class","overlay-div")
-			.html('<svg viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg"> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="315.281" y="318.992">Hong Kong</tspan></text> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="176.023" y="342.992">Shenzhen</tspan></text> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="35.0156" y="367.992">Guangzhou</tspan></text> <path d="M298.5 251.5C234 232 230.5 262.5 216 319" stroke="black" stroke-width="3"/> <path d="M168 162C94 199 58.9999 260 79.0002 348" stroke="black" stroke-width="3"/> </svg>')
+			.html('<svg viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg"> <defs> <marker id="head" orient="auto" markerWidth="6" markerHeight="8" refX="0" refY="4"> <path d="M0,0 V8 L4,4 Z" fill="black" /> </marker> </defs> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"> <tspan x="315.281" y="318.992">Hong Kong</tspan> </text> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"> <tspan x="176.023" y="342.992">Shenzhen</tspan> </text> <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Atlas Grotesk" font-size="16" font-weight="bold" letter-spacing="0em"> <tspan x="35.0156" y="367.992">Guangzhou</tspan> </text> <path marker-end="url(#head)" d="M217 319C218.167 289 247.6 226 296 250" stroke="black" stroke-width="3"/> <path marker-end="url(#head)" d="M77.5002 345.5C65.8335 306.5 65.8002 216.7 159 169.5" stroke="black" stroke-width="3"/> </svg>')
 
 
 		var swiperBorderDiv = swiperSlides
@@ -907,10 +911,17 @@ function init() {
 			.attr("class","globe-wrapper-svg-container")
 			.html(svg)
 
+		var scalingRatio = 0;
+		if(window.devicePixelRatio){
+			scalingRatio = window.devicePixelRatio;
+		}
+
 		var canvas = globeWrapper
 			.append("canvas")
-		  .attr("width", width)
-		  .attr("height", height)
+		  .attr("width", width*scalingRatio)
+		  .attr("height", height*scalingRatio)
+			.style("width", width+"px")
+		  .style("height", height+"px")
 			.each(function(d){
 
 				var d = d3.select(this.parentNode.parentNode.parentNode).datum();
@@ -926,6 +937,9 @@ function init() {
 					.style("transform","translate("+markerProjection[0]+"px,"+markerProjection[1]+"px)");
 
 				var context = d3.select(this).node().getContext("2d");
+
+				context.scale(scalingRatio, scalingRatio)
+
 
 				var path = d3.geoPath()
 					.projection(projection)

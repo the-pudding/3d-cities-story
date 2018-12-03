@@ -1,14 +1,14 @@
 {
-  "title": "Title Case Headline Goes Here",
-  "description": "Your dek goes here. It is probably one or two sentences that succinctly describe more explicitly what the story will be about.",
-  "url": "https://pudding.cool/year/month/name/",
-  "keywords": "tk",
-  "imgFacebook": "https://pudding.cool/year/month/name/assets/social/social-facebook.jpg",
-  "imgTwitter": "https://pudding.cool/year/month/name/assets/social/social-twitter.jpg",
+  "title": "Population Mountains",
+  "description": "How to perceive the population size of cities.",
+  "url": "https://pudding.cool/2018/12/3d-cities-story/",
+  "keywords": "cities, population",
+  "imgFacebook": "https://pudding.cool/2018/12/3d-cities-story/assets/social/social-facebook.jpg",
+  "imgTwitter": "https://pudding.cool/2018/12/3d-cities-story/social/social-twitter.jpg",
   "author": {
     "name": "Matt Daniels",
     "url": "https://pudding.cool/author/matt-daniels/",
     "twitterHandle": "@matthew_daniels"
   },
-  "analytics": ""
+  "analytics": "UA-90567923-1"
 }
