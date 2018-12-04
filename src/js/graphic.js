@@ -433,7 +433,7 @@ function init() {
 			city_name:"Tianjin",
 			city_id:"tianjin",
 			population:"13.2 million People",
-			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span>Tianjin is situated 70 miles southeast of Beijing, and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new nearby city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>, which will be <a href="https://qz.com/198337/chinas-new-megalopolis-would-be-bigger-than-uruguay-and-more-populous-than-germany"/>one big one huge megalopolis</a> with over 100 million people.',
+			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span>Tianjin is situated 70 miles southeast of Beijing, and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new nearby city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>, which will be <a href="https://qz.com/198337/chinas-new-megalopolis-would-be-bigger-than-uruguay-and-more-populous-than-germany"/>one big megalopolis</a> with over 100 million people.',
 			location:{
 				center:[117.077225,39.337146],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
