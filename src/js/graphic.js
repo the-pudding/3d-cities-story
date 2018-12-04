@@ -221,7 +221,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},500);
+		},1500);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
