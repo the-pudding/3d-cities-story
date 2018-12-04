@@ -28,7 +28,6 @@ function init() {
 				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-97.677,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			}
 			return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-26.55,-10.28,2.64,0,60/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-
 		})
 
 		// d3.select(".intro-image-two")
@@ -310,7 +309,7 @@ function init() {
 			city_name:"Kinshasa",
 			city_id:"kinshasa",
 			population:"13.1 million People",
-			city_text:'<span>KINSHASA, DRC (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Kinshasa is a mountain surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
+			city_text:'<span>KINSHASA, DRC (13.1M people)&mdash;</span> Since 2001, Kinshasa has grown from the 38th to 23rd largest city in the world. One of the biggest challenges facing this city is transportation: <a href="https://capx.co/africa-is-urbanising-without-globalising/">getting to Kinshasa is difficult</a>, and you can see this in the population data. Figuratively, Kinshasa is a stand-alone mountain, surrounded by few settlements (compare this to a similar city, such as Paris, where the surrounding city is heavily suburbanized).',
 			location:{
 				center:[15.31,-4.36],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -336,7 +335,7 @@ function init() {
 			city_name:"Lagos",
 			city_id:"lagos",
 			population:"13 million People",
-			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimates of over 100M people).',
+			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimated to reach of over 100M people).',
 			location:{
 				center:[3.172,6.719],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -349,7 +348,7 @@ function init() {
 			city_name:"Dar es Salaam",
 			city_id:'dar_es_salaam',
 			population:"6 million People",
-			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030 and will be 10 million people by 2030. Just 20 years ago, the city was just 2 million in size.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Cities</span>',
+			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030 and will be 10 million people by 2030. 20 years ago, the city was just 2 million in size.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Cities</span>',
 			location:{
 				center:[39.14,-6.845],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -363,7 +362,7 @@ function init() {
 			city_name:"Bangalore",
 			city_id:"bangalore",
 			population:"11.4 million People",
-			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India.”) The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the landscape is different. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India.”) The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, In China, the scale of population is on another level. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -689,9 +688,6 @@ function init() {
 			if(angle != "3D" && zoomLevel == "close"){
 				mapStyle = "cjo7bhuwn056i2srxhhqjer8v"
 			}
-
-
-
 			//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
 			var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+pathLink+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"@2x?access_token="+token;
 			return imageLink
