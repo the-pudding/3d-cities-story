@@ -17,6 +17,9 @@ function init() {
 	function addStoryImages(){
 		console.log("ADDING STORY IMAGES");
 		d3.select(".intro-image").append("img").attr("src",function(){
+			if(viewportWidth > 1280){
+				return "assets/images/world_asia_1280_480.png"
+			}
 			if(viewportWidth < 600){
 				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/95,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			}
@@ -24,6 +27,9 @@ function init() {
 		})
 
 		d3.select(".intro-image").append("img").attr("src",function(){
+			if(viewportWidth > 1280){
+				return "assets/images/world_america_1280_480.png"
+			}
 			if(viewportWidth < 600){
 				return "https://api.mapbox.com/styles/v1/dock4242/cjo5tayip0w952rpski8ml7w0/static/-97.677,12,2.64,0,50/"+Math.min(1280,viewportWidth)+"x"+Math.min(Math.floor(viewportHeight*viewportHeightAdjust),600)+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			}
@@ -46,21 +52,46 @@ function init() {
 			.append("div")
 			.append("img")
 			.attr("src",function(){
+				if(viewportWidth > 1280){
+					return "assets/images/region_america_625_480.png"
+				}
 				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/-117.91,33.55,6,-0.67,60/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			})
-			.style("width",Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px")
-			.style("height",Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px")
+			.style("width",function(){
+				if(viewportWidth > 1280){
+					return "625px"
+				}
+				return Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px"
+			})
+			.style("height",function(){
+				if(viewportWidth > 1280){
+					return "480px"
+				}
+				Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px"
+			})
 			;
 
 		d3.select(".intro-image-two")
 			.append("div")
 			.append("img")
 			.attr("src",function(){
+				if(viewportWidth > 1280){
+					return "assets/images/region_asia_625_480.png"
+				}
 				return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/107.81,-6.76,6,0,47/"+Math.floor(Math.min(1280,(viewportWidth/countPerRow)-20))+"x"+Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
 			})
-			.style("width",Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px")
-			.style("height",Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px")
-
+			.style("width",function(){
+				if(viewportWidth > 1280){
+					return "625px"
+				}
+				return Math.floor(Math.min(1280,(viewportWidth/countPerRow)-30))+"px"
+			})
+			.style("height",function(){
+				if(viewportWidth > 1280){
+					return "480px"
+				}
+				Math.floor(Math.min(viewportHeight*viewportHeightAdjust,600))+"px"
+			})
 			;
 
 
@@ -190,7 +221,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},15000);
+		},500);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
@@ -296,7 +327,7 @@ function init() {
 			city_name:"Singapore",
 			city_id:"singapore",
 			population:"5.7 million People",
-			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which is 2 million people larger and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.<br><br><span class="title-break">African Cities</span>',
+			city_text:'Note how different these cities are in shape. Paris and London are the largest peaks in their respective areas, with a slow descent surrounding them, denoting suburbanization.<br><br>Singapore is considered one of the most “planned” cities in the world, and in its background lies Kuala Lumpur, which has 2 million more people and has experienced immense, uncontained growth over the past decade.<br><br>Let’s now contrast this with Kinshasa and other major cities in Africa.<br><br><span class="title-break">African Cities</span>',
 			location:{
 				center:[103.838,1.411],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -322,7 +353,7 @@ function init() {
 			city_name:"Luanda",
 			city_id:"luanda",
 			population:"7.7 million People",
-			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> The city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world for expats</a> and will grow to 12.1 million by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
+			city_text:'<span>LUANDA, ANGOLA (7.7M people)&mdash;</span> The city is one of the <a href="https://www.economist.com/baobab/2011/02/08/eye-wateringly-expensive">most expensive in the world for expats</a> and will grow to 12.1 million people by 2030 (Angola has the third-highest fertility rate in the world: 6.16 children born/woman).',
 			location:{
 				center:[13.36,-8.705],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -335,7 +366,7 @@ function init() {
 			city_name:"Lagos",
 			city_id:"lagos",
 			population:"13 million People",
-			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most-populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimated to reach of over 100M people).',
+			city_text:'<span>LAGOS, NIGERIA (13M people)&mdash;</span> Compared to Kinshasa and Luanda, Lagos is surrounded by cities and development (Nigeria is the most populous country in Africa). The city is predicted to be the <a href="https://journals.sagepub.com/doi/abs/10.1177/0956247816663557">largest in the world by 2100</a> (estimated to reach over 100 million people).',
 			location:{
 				center:[3.172,6.719],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -348,7 +379,7 @@ function init() {
 			city_name:"Dar es Salaam",
 			city_id:'dar_es_salaam',
 			population:"6 million People",
-			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015 - 2030 and will be 10 million people by 2030. 20 years ago, the city was just 2 million in size.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Cities</span>',
+			city_text:'<span>DAR ES SALAAM, TANZANIA (6M people)&mdash;</span> The city has the highest projected growth rates in Africa from 2015–2030 and will be home to 10 million people by 2030. Twenty years ago, the city was just 2 million in size.<br><br>Let’s now turn to Asia, where rapid urbanization in India and China are changing the distribution of the world’s population centers.<br><br><span class="title-break">Asian Cities</span>',
 			location:{
 				center:[39.14,-6.845],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -359,10 +390,10 @@ function init() {
 		}
 		,
 		{
-			city_name:"Bangalore",
+			city_name:"Bengaluru",
 			city_id:"bangalore",
 			population:"11.4 million People",
-			city_text:'<span>BANGALORE, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10M people), led by its burgeoning tech sector (aka the “Silicon Valley of India.”) The population density of India is easier to see in the above images, with Bangalore surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine...Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, In China, the scale of population is on another level. Imagine all of the 10 million-person cities we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			city_text:'<span>BENGALURU, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10 million people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is easier to see in the above images, with Bengaluru (aka Bangalore) surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine . . . Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, In China, the scale of population is on another level. Imagine all of the cities with ten million people that we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -375,7 +406,7 @@ function init() {
 			city_name:"Pearl River Delta",
 			city_id:"hong_kong",
 			population:"50-100 million People",
-			city_text:'<span>PEARL RIVER DELTA, CHINA (50M - 100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4M people), Shenzhen (11.9M), Guangzhou (12.6M). Rapid growth has linked all the surrounding cities with contiguous urban density. It’s formed a mega-region that’s roughly <a href="https://www.theguardian.com/cities/2017/may/05/megaregions-endless-china-urbanisation-sprawl-xiongan-jingjinji">the size of the UK in population</a> and akin to the US’s northeast corridor (Boston, NYC, Philadelphia, Baltimore, and DC) merging into one enormous city.',
+			city_text:'<span>PEARL RIVER DELTA, CHINA (50M-100M people)&mdash;</span> This is actually three cities: Hong Kong (7.4 million people), Shenzhen (11.9 million), Guangzhou (12.6 million). Rapid growth has linked all the surrounding cities with contiguous urban density. It has formed a mega-region that’s roughly <a href="https://www.theguardian.com/cities/2017/may/05/megaregions-endless-china-urbanisation-sprawl-xiongan-jingjinji">the size of the UK in population</a> and akin to the US’s northeast corridor (Boston, NYC, Philadelphia, Baltimore, and DC) and merging into one enormous city.',
 			location:{
 				center:[113.570587,22.78],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -387,9 +418,9 @@ function init() {
 		,
 		{
 			city_name:"Chongqing",
-			city_id:"chongqing",
+				city_id:"chongqing",
 			population:"14.8 million People",
-			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many its size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8M people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
+			city_text:'<span>CHONGQING, CHINA (14.8M people)&mdash;</span>It’s now the 14th largest city in the world, and for many, its size is a surprise. <a href="https://www.citylab.com/design/2015/03/inside-chinas-unknown-mega-city/389000/" >CityLab called it</a> “China’s Unknown Mega-City,” “the biggest city you’ve never heard of,” and “China’s Detroit.” It sits a 5 hour drive from another emerging megacity, Chengdu (8.8 million people), and it’s part of the Chenyu mega-region, which is over three times the size of the Pearl River Delta, or roughly the size of Austria (<a href="https://qz.com/201012/chinas-mega-cities-are-combining-into-even-larger-mega-regions-and-theyre-doing-it-all-wrong/" >Quartz</a>).',
 			location:{
 				center:[106.547900,29.570338],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -402,7 +433,7 @@ function init() {
 			city_name:"Tianjin",
 			city_id:"tianjin",
 			population:"13.2 million People",
-			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span>Tianjin sits 70 miles southeast of Beijing and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new nearby city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>, which will be <a href="https://qz.com/198337/chinas-new-megalopolis-would-be-bigger-than-uruguay-and-more-populous-than-germany"/>one big one huge megalopolis</a> with over 100 million people.',
+			city_text:'<span>TIANJIN, CHINA (13.2M people)&mdash;</span>Tianjin is situated 70 miles southeast of Beijing, and the Chinese government is <a href="https://www.theguardian.com/world/2017/apr/04/china-plans-build-new-city-nearly-three-times-the-size-of-new-york">planning a new nearby city</a>, Xiongan, to complete the <a href="https://en.wikipedia.org/wiki/Jingjinji">Jing-Jin-Ji mega-region</a>, which will be <a href="https://qz.com/198337/chinas-new-megalopolis-would-be-bigger-than-uruguay-and-more-populous-than-germany"/>one big one huge megalopolis</a> with over 100 million people.',
 			location:{
 				center:[117.077225,39.337146],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
@@ -687,6 +718,10 @@ function init() {
 
 			if(angle != "3D" && zoomLevel == "close"){
 				mapStyle = "cjo7bhuwn056i2srxhhqjer8v"
+			}
+			if(width == 450 && angle == "3D"){
+				console.log("assets/images/"+data.city_id+"_tile_"+zoomLevel+".png");
+				return "assets/images/"+data.city_id+"_tile_"+zoomLevel+".png"
 			}
 			//var mapStyle = "cjnel8krq2ltq2spteciqe2x3"
 			var imageLink = "https://api.mapbox.com/styles/v1/dock4242/"+mapStyle+"/static/"+pathLink+lng+","+lat+","+zoom+","+bearing+","+pitch+"/"+width+"x"+height+"@2x?access_token="+token;
