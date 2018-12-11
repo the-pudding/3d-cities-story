@@ -573,7 +573,7 @@ function init() {
 	function makeLegend(){
 		var container = d3.select(".legend");
 		var dataPoints = [[1,"#fbeee0"],[250,"#f3ba7c"],[1500,"#f32020"],[5000,"#830707"],[10000,"#4b0707"]];
-		container.append("p").attr("class","legend-title").text("Population / 1,000 sq. meters")
+		container.append("p").attr("class","legend-title").text("Population / 1 million sq. meters")
 
 		var commaFormat = d3.format(",");
 
