@@ -220,7 +220,7 @@ function init() {
 			rotateStep.remove();
 			addStoryImages();
 
-		},15000);
+		},25000);
 
 		var tweenProgress = 0;
 		var tweenProgressRotate = 0;
