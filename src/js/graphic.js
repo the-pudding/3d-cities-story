@@ -153,7 +153,6 @@ function init() {
 				})
 				d3.select(".map-not-loaded").select("p").text("This is a story about how to perceive the population size of cities.");
 				d3.select("body").classed("map-hidden",false);
-
 			}
 		})
 
@@ -393,7 +392,7 @@ function init() {
 			city_name:"Bengaluru",
 			city_id:"bangalore",
 			population:"11.4 million People",
-			city_text:'<span>BENGALURU, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10 million people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is easier to see in the above images, with Bengaluru (aka Bangalore) surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine . . . Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, In China, the scale of population is on another level. Imagine all of the cities with ten million people that we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
+			city_text:'<span>BENGALURU, INDIA (11.4M people)&mdash;</span> It reached megacity status in the 2010s (over 10 million people), led by its burgeoning tech sector (aka the “Silicon Valley of India”). The population density of India is easier to see in the above images, with Bengaluru (aka Bangalore) surrounded by incredibly dense urban settlements. The mostly unplanned growth has come at a cost, as <a href="https://www.theguardian.com/cities/2018/mar/19/urban-explosion-kinshasa-el-alto-growth-mexico-city-bangalore-lagos">covered by The Guardian</a>, “The situation is very worrying. People are moving out. Illnesses are increasing. At this rate every house will need a dialysis machine . . . Bangalore cannot continue like this. It is becoming an unliveable city. This is the worst city in the world for unchecked urbanisation.”<br><br>In China, the scale of population is on another level. Imagine all of the cities with ten million people that we’ve covered, except now they are all adjacent to one another. It’s a concept called “mega-regions,” and China is creating lots of them.',
 			location:{
 				center:[77.511,13.109],
 				pathString:"knxnCswrnT}qVaj~FveoI{fsDpvfAjuoH",
