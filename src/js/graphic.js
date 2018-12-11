@@ -191,34 +191,34 @@ function init() {
 		console.timeEnd("start")
 
 		var fallBack = setTimeout(function(){
-			console.timeEnd("fallback")
-			console.log("falling back");
-			d3.select("body").classed("map-hidden",false);
-			loadingOverlay.transition().duration(1000).style("opacity",0).on("end",function(d){
-				d3.select(this).remove();
-			})
-			map.remove();
-			d3.select(".scroll").classed("image-only",true);
-			d3.selectAll(".step").append("div").attr("class","fallback-image")
-				.append("img").attr("src",function(d,i){
-
-					var divHeight = d3.select(this.parentNode.parentNode).node().getBoundingClientRect().height;
-					if(i==0){
-						return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,0,0/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-					}
-					else if(i==1){
-						return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,0,60/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-					}
-					else if(i==2){
-						return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,-65.6,60/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
-					}
-				});
-
-			pinScene.removePin(true);
-			pinScene.remove();
-			tiltShiftStep.remove();
-			rotateStep.remove();
-			addStoryImages();
+			// console.timeEnd("fallback")
+			// console.log("falling back");
+			// d3.select("body").classed("map-hidden",false);
+			// loadingOverlay.transition().duration(1000).style("opacity",0).on("end",function(d){
+			// 	d3.select(this).remove();
+			// })
+			// map.remove();
+			// d3.select(".scroll").classed("image-only",true);
+			// d3.selectAll(".step").append("div").attr("class","fallback-image")
+			// 	.append("img").attr("src",function(d,i){
+			//
+			// 		var divHeight = d3.select(this.parentNode.parentNode).node().getBoundingClientRect().height;
+			// 		if(i==0){
+			// 			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,0,0/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			// 		}
+			// 		else if(i==1){
+			// 			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,0,60/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			// 		}
+			// 		else if(i==2){
+			// 			return "https://api.mapbox.com/styles/v1/dock4242/cjoojxw063ksk2spglbhik1g8/static/"+startCoords[0]+","+startCoords[1]+",6,-65.6,60/"+Math.floor(Math.min(1280,(viewportWidth)))+"x"+divHeight+"@2x?access_token=pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ"
+			// 		}
+			// 	});
+			//
+			// pinScene.removePin(true);
+			// pinScene.remove();
+			// tiltShiftStep.remove();
+			// rotateStep.remove();
+			// addStoryImages();
 
 		},30000);
 
