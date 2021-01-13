@@ -123,9 +123,9 @@ function init() {
 		}
 
 		// increment();
-
-		mapboxgl.accessToken =
-			'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
+		mapboxgl.accessToken = "pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2tqdXA5OGJoMDFtbzJ0bnEwbGl4cG0zYiJ9.6u_4MspNw0Y7jd8q5zr57A";
+		// mapboxgl.accessToken =
+		// 	'pk.eyJ1IjoiZG9jazQyNDIiLCJhIjoiY2pjazE5eTM2NDl2aDJ3cDUyeDlsb292NiJ9.Jr__XbmAolbLyzPDj7-8kQ';
 
 		var map = new mapboxgl.Map({
 			container: 'map',
